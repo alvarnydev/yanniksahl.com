@@ -22,6 +22,5 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */
-  },
-  "include": ["**/*.ts"]
+  }
 }
