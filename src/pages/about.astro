@@ -6,22 +6,31 @@ import Hero from "../components/Hero.astro";
 import { fade } from "astro:transitions";
 import { getCollection } from "astro:content";
 
-const about = (await getCollection("about"))[0];
-const {
-  data: { title, tagline, content },
-} = about;
+const about = await getCollection("about");
+const sections = await Promise.all(
+  about.map(async (item) => {
+    const { Content } = await item.render();
+    return {
+      title: item.slug,
+      content: Content,
+    };
+  }),
+);
 ---
 
 <BaseLayout title="About | Yannik Sahl" description="About Yannik Sahl">
   <div transition:animate={fade({ duration: ".3s" })} class="stack gap-20">
     <main class="wrapper about">
-      <Hero title={title} tagline={tagline} />
+      <Hero
+        title="About"
+        tagline="Thanks for stopping by! Read below to learn more about myself and my background."
+      />
       {
-        Object.entries(content).map(([key, value]) => (
+        sections.map((section) => (
           <section>
-            <h2 class="section-title">{key}</h2>
+            <h2 class="section-title">{section.title}</h2>
             <div class="content">
-              <p>{value}</p>
+              <section.content />
             </div>
           </section>
         ))

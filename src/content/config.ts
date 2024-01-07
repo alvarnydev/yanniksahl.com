@@ -5,12 +5,6 @@ export const collections = {
     type: "content",
     schema: z.object({
       title: z.string(),
-      tagline: z.string(),
-      content: z.object({
-        background: z.string(),
-        education: z.string(),
-        skills: z.string(),
-      }),
     }),
   }),
   work: defineCollection({
