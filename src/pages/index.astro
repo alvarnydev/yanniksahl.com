@@ -67,10 +67,7 @@ const projects = (await getCollection("work"))
             {
               projects.map((project) => (
                 <li>
-                  <PortfolioPreview
-                    client:visible={{ rootMargin: "200px" }}
-                    project={project}
-                  />
+                  <PortfolioPreview project={project} />
                 </li>
               ))
             }
