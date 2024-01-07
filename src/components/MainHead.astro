@@ -25,15 +25,15 @@ const {
   href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&family=Rubik:wght@500;600&display=swap"
   rel="stylesheet"
 />
-<script>
+<!-- <script>
   document.addEventListener("astro:after-swap", () => {
     localStorage.theme === "dark"
       ? document.documentElement.classList.add("theme-dark")
       : document.documentElement.classList.remove("theme-dark");
   });
-</script>
+</script> -->
 <script>
-  document.addEventListener("astro:page-load", () => {
+  document.addEventListener("astro:after-swap", () => {
     // This code is inlined in the head to make dark mode instant & blocking.
     const getThemePreference = () => {
       if (
@@ -47,20 +47,28 @@ const {
         : "light";
     };
     const isDark = getThemePreference() === "dark";
+    console.log(
+      isDark,
+      localStorage.getItem("theme"),
+      window.matchMedia("(prefers-color-scheme: dark)"),
+    );
     document.documentElement.classList[isDark ? "add" : "remove"]("theme-dark");
+    console.log("mh classlist", document.documentElement.classList);
+  });
 
-    if (typeof localStorage !== "undefined") {
-      // Watch the document element and persist user preference when it changes.
-      const observer = new MutationObserver(() => {
-        const isDark =
-          document.documentElement.classList.contains("theme-dark");
-        console.log(document.documentElement.classList);
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-      });
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["class"],
-      });
-    }
+  document.addEventListener("astro:page-load", () => {
+    // Watch the document element and persist user preference when it changes.
+    const observer = new MutationObserver(function () {
+      const isDark = document.documentElement.classList.contains("theme-dark");
+      console.log("observer - theme was set to: ", isDark);
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    document.addEventListener("astro:before-preparation", () => {
+      observer.disconnect();
+    });
   });
 </script>
