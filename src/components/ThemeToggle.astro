@@ -68,34 +68,34 @@ import Icon from "./Icon.astro";
 </style>
 
 <script>
-  class ThemeToggle extends HTMLElement {
-    constructor() {
-      super();
+  document.addEventListener("astro:page-load", () => {
+    class ThemeToggle extends HTMLElement {
+      constructor() {
+        super();
 
-      const button = this.querySelector("button")!;
+        const button = this.querySelector("button")!;
 
-      /** Set the theme to dark/light mode. */
-      const setTheme = (dark: boolean) => {
-        document.documentElement.classList[dark ? "add" : "remove"](
-          "theme-dark",
-        );
-        console.log("tt - theme set: ", dark);
-        button.setAttribute("aria-pressed", String(dark));
-      };
+        /** Set the theme to dark/light mode. */
+        const setTheme = (dark: boolean) => {
+          document.documentElement.classList[dark ? "add" : "remove"](
+            "theme-dark",
+          );
+          button.setAttribute("aria-pressed", String(dark));
+        };
 
-      // Toggle the theme when a user clicks the button.
-      button.addEventListener("click", () => setTheme(!this.isDark()));
+        // Toggle the theme when a user clicks the button.
+        button.addEventListener("click", () => setTheme(!this.isDark()));
 
-      // Initialize button state to reflect current theme.
-      document.addEventListener("astro:after-swap", () => {
+        // Initialize button state to reflect current theme.
         setTheme(this.isDark());
-      });
-    }
+      }
 
-    isDark() {
-      console.log("tt classlist: ", document.documentElement.classList);
-      return document.documentElement.classList.contains("theme-dark");
+      isDark() {
+        return document.documentElement.classList.contains("theme-dark");
+      }
     }
-  }
-  customElements.define("theme-toggle", ThemeToggle);
+    if (customElements.get("theme-toggle") === undefined) {
+      customElements.define("theme-toggle", ThemeToggle);
+    }
+  });
 </script>

@@ -25,35 +25,30 @@ const {
   href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&family=Rubik:wght@500;600&display=swap"
   rel="stylesheet"
 />
-<!-- <script>
-  document.addEventListener("astro:after-swap", () => {
-    localStorage.theme === "dark"
-      ? document.documentElement.classList.add("theme-dark")
-      : document.documentElement.classList.remove("theme-dark");
+<script is:inline>
+  document.addEventListener("astro:before-swap", (ev) => {
+    ev.newDocument.documentElement.classList =
+      document.documentElement.classList;
   });
-</script> -->
+</script>
 <script>
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+
+  document.documentElement.classList[
+    getThemePreference() === "dark" ? "add" : "remove"
+  ]("theme-dark");
+
   document.addEventListener("astro:after-swap", () => {
-    // This code is inlined in the head to make dark mode instant & blocking.
-    const getThemePreference = () => {
-      if (
-        typeof localStorage !== "undefined" &&
-        localStorage.getItem("theme")
-      ) {
-        return localStorage.getItem("theme");
-      }
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-    };
-    const isDark = getThemePreference() === "dark";
-    console.log(
-      isDark,
-      localStorage.getItem("theme"),
-      window.matchMedia("(prefers-color-scheme: dark)"),
-    );
-    document.documentElement.classList[isDark ? "add" : "remove"]("theme-dark");
-    console.log("mh classlist", document.documentElement.classList);
+    document.documentElement.classList[
+      getThemePreference() === "dark" ? "add" : "remove"
+    ]("theme-dark");
   });
 
   document.addEventListener("astro:page-load", () => {
