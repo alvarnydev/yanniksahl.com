@@ -5,6 +5,7 @@ import ContactCTA from "../components/ContactCTA.astro";
 import Hero from "../components/Hero.astro";
 import { fade } from "astro:transitions";
 import { getCollection } from "astro:content";
+import animation from "@/utils/animations";
 
 const about = await getCollection("about");
 const sections = await Promise.all(
@@ -19,7 +20,7 @@ const sections = await Promise.all(
 ---
 
 <BaseLayout title="About | Yannik Sahl" description="About Yannik Sahl">
-  <div transition:animate={fade({ duration: ".3s" })} class="stack gap-20">
+  <div transition:animate={animation} class="stack gap-20">
     <main class="wrapper about">
       <Hero
         title="About"

@@ -12,10 +12,12 @@ import Icon from "../components/Icon.astro";
 import Pill from "../components/Pill.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 
+// Animation
+import animation from "@/utils/animations";
+
 // Page section components
 import ContactCTA from "../components/ContactCTA.astro";
 import Skills from "../components/Skills.astro";
-import { fade } from "astro:transitions";
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection("work"))
@@ -27,10 +29,7 @@ const projects = (await getCollection("work"))
 ---
 
 <BaseLayout>
-  <div
-    transition:animate={fade({ duration: ".3s" })}
-    class="stack gap-20 lg:gap-48"
-  >
+  <div transition:animate={animation} class="stack gap-20 lg:gap-48">
     <div class="wrapper stack gap-8 lg:gap-20">
       <header class="hero">
         <Hero

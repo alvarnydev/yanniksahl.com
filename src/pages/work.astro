@@ -8,6 +8,7 @@ import PortfolioPreview from "../components/PortfolioPreview.astro";
 import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
 import { fade } from "astro:transitions";
+import animation from "@/utils/animations";
 
 const projects = (await getCollection("work")).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
@@ -18,7 +19,7 @@ const projects = (await getCollection("work")).sort(
   title="My Work | Yannik Sahl"
   description="Learn about Yannik Sahl's most recent projects"
 >
-  <div transition:animate={fade({ duration: ".3s" })} class="stack gap-20">
+  <div transition:animate={animation} class="stack gap-20">
     <main class="wrapper stack gap-8">
       <Hero
         title="My Work"
