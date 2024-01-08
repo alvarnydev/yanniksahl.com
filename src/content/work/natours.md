@@ -11,3 +11,5 @@ tags:
   - HTML5
   - CSS3
 ---
+
+_Click the image to be taken to the site._
