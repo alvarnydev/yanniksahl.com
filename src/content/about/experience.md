@@ -5,7 +5,7 @@ title: "Experience"
 (Work in progress)
 
 <!-- Computer Engineering -->
-<div style="display: flex; justify-content: space-between">
+<!-- <div style="display: flex; justify-content: space-between">
   <p>Technische Universität Darmstadt</p>
   <p><i>Currently</i></p>
 </div>
@@ -18,4 +18,4 @@ title: "Experience"
   <li>Graduated with a final grade of 1.5</li>
 </ul>
 
-<br>
+<br> -->
