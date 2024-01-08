@@ -2,7 +2,7 @@
 title: "Skills"
 ---
 
-##### <u>.NET</u>
+.NET
 
 <div style="padding-bottom:1rem"></div>
 
@@ -11,7 +11,7 @@ This is also the time when I learned lots about programming fundamentals, such a
 
 <br>
 
-##### <u>TypeScript, React & Next</u>
+TypeScript, React & Next
 
 <div style="padding-bottom:1rem"></div>
 So then I heard the cool kids were all about web development with React. Me lacking frontend experience I decided to learn it and remember thinking "this should be easy, I have a good foundation". Learning HTML and CSS was easy enough, and then I was to meet JavaScript. Why is this variable available here? Hmm. Oh, '2' == 2? Right. Still, I endured and learned all about its weird quirks and features.

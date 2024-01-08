@@ -55,7 +55,6 @@ const {
     // Watch the document element and persist user preference when it changes.
     const observer = new MutationObserver(function () {
       const isDark = document.documentElement.classList.contains("theme-dark");
-      console.log("observer - theme was set to: ", isDark);
       localStorage.setItem("theme", isDark ? "dark" : "light");
     });
     observer.observe(document.documentElement, {
