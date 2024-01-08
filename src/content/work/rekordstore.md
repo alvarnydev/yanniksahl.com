@@ -12,4 +12,4 @@ tags:
   - TypeScript
 ---
 
-_Click the image to be taken to the site._
+_(Click the image to be taken to the site)_
