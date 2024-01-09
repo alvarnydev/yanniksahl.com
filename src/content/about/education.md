@@ -4,7 +4,7 @@ title: "Education"
 
 <!-- EMT -->
 
-I earned my two Bachelor diplomas in the fields of Business Administration and Computer Engineering. I'm also a qualified E.M.T. which is a skill I picked up in 2022 and briefly worked as in 2023.
+I earned two Bachelor diplomas in the fields of Business Administration and Computer Engineering. I'm also a qualified E.M.T. which is a skill I picked up in 2022 and briefly worked as in 2023.
 
 <br>
 
