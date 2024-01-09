@@ -3,19 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import ContactCTA from "../components/ContactCTA.astro";
 import Hero from "../components/Hero.astro";
-import { getCollection } from "astro:content";
 import animation from "@/utils/animations";
-
-const about = await getCollection("about");
-const sections = await Promise.all(
-  about.map(async (item) => {
-    const { Content } = await item.render();
-    return {
-      title: item.slug,
-      content: Content,
-    };
-  }),
-);
 ---
 
 <BaseLayout title="About | Yannik Sahl" description="About Yannik Sahl">
@@ -25,6 +13,160 @@ const sections = await Promise.all(
         title="About"
         tagline="Thanks for stopping by! Read below to learn more about myself and my background."
       />
+      <section>
+        <h2 class="section-title">Background</h2>
+        <div class="content">
+          <p class="pb-2">
+            Since I can remember I've found computers to be these fascinating,
+            ✨magical✨ machines that could do <i>anything</i>. So I studied
+            them and found out that they're actually not all that smart, but in
+            the hands of the right people they could <i>feel</i> magic.
+          </p>
+          <p>
+            So from then on I too would wanted to become a computer wizard which
+            led me down the path of software development. Over the years of
+            sometimes more and sometimes less wizardy things I've picked up
+            quite a versatile set of skills and experiences that today help me
+            fulfill that role the best I ever could. Read more about those below
+            ⬇️
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">Education</h2>
+        <div class="content">
+          <p class="mb-8">
+            I've studied for and completed two Bachelor programs in the
+            following fields:
+          </p>
+          <div
+            class="rounded-3xl p-6 mb-8 border-[1px] border-[var(--gray-800)] bg-[url('/assets/computer.webp')] bg-cover"
+          >
+            <div class="flex justify-between pb-4">
+              <p>B.Sc. Computer Engineering</p>
+              <p><i>2018 to 2020</i></p>
+            </div>
+            <ul class="pl-8 list-disc">
+              <li class="pb-2">Studied for 4 semesters at HTW Berlin</li>
+              <li class="pb-2">
+                Specialization in advanced programming, embedded systems and IT
+                security
+              </li>
+              <li>Graduated with a final grade of 1.5</li>
+            </ul>
+          </div>
+          <div
+            class="rounded-3xl p-6 mb-8 border-[1px] border-[var(--gray-800)] bg-[url('/assets/computer.webp')] bg-cover"
+          >
+            <div class="flex justify-between pb-4">
+              <p>B.Sc. Business Administration</p>
+              <p><i>2015 to 2018</i></p>
+            </div>
+            <ul class="pl-8 list-disc">
+              <li class="pb-2">
+                Studied for 5 semesters at FU Berlin and spent one semester
+                abroad at UNAV in Pamplona, Spain
+              </li>
+              <li class="pb-2">
+                Specialization in finance, management accounting and business
+                informatics
+              </li>
+              <li>Graduated with a final grade of 2.0</li>
+            </ul>
+          </div>
+          <p>
+            I'm also a qualified E.M.T. which is a skill I picked up in 2022 and
+            briefly worked as in 2023.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">Experience</h2>
+        <div class="content">
+          <p>(Work in Progress)</p>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">Skills</h2>
+        <div class="content">
+          <p>(Work in Progress)</p>
+        </div>
+      </section>
+    </main>
+    <ContactCTA />
+  </div>
+
+  <style>
+    .about {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    img {
+      margin-top: 1.5rem;
+      border-radius: 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--gray-200);
+    }
+
+    .section-title {
+      grid-column-start: 1;
+      font-size: var(--text-xl);
+      color: var(--gray-0);
+      text-transform: capitalize;
+    }
+
+    .content {
+      grid-column: 2 / 4;
+    }
+
+    .content :global(a) {
+      text-decoration: 1px solid underline transparent;
+      text-underline-offset: 0.25em;
+      transition: text-decoration-color var(--theme-transition);
+    }
+
+    .content :global(a:hover),
+    .content :global(a:focus) {
+      text-decoration-color: currentColor;
+    }
+
+    @media (min-width: 50em) {
+      .about {
+        display: grid;
+        grid-template-columns: 1fr 60% 1fr;
+      }
+
+      .about > :global(:first-child) {
+        grid-column-start: 2;
+      }
+
+      section {
+        display: contents;
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+
+  <!-- const about = await getCollection("about");
+const sections = await Promise.all(
+  about.map(async (item) => {
+    const { Content } = await item.render();
+    return {
+      title: item.slug,
+      content: Content,
+    };
+  }),
+); -->
+
+  <!-- 
       {
         sections.map((section) => (
           <section>
@@ -33,68 +175,6 @@ const sections = await Promise.all(
               <section.content />
             </div>
           </section>
-        ))
-      }
-    </main>
-    <ContactCTA />
-  </div>
+        )) 
+      }-->
 </BaseLayout>
-
-<style>
-  .about {
-    display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
-  }
-
-  img {
-    margin-top: 1.5rem;
-    border-radius: 1.5rem;
-    box-shadow: var(--shadow-md);
-  }
-
-  section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    color: var(--gray-200);
-  }
-
-  .section-title {
-    grid-column-start: 1;
-    font-size: var(--text-xl);
-    color: var(--gray-0);
-    text-transform: capitalize;
-  }
-
-  .content {
-    grid-column: 2 / 4;
-  }
-
-  .content :global(a) {
-    text-decoration: 1px solid underline transparent;
-    text-underline-offset: 0.25em;
-    transition: text-decoration-color var(--theme-transition);
-  }
-
-  .content :global(a:hover),
-  .content :global(a:focus) {
-    text-decoration-color: currentColor;
-  }
-
-  @media (min-width: 50em) {
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 60% 1fr;
-    }
-
-    .about > :global(:first-child) {
-      grid-column-start: 2;
-    }
-
-    section {
-      display: contents;
-      font-size: var(--text-lg);
-    }
-  }
-</style>
