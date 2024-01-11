@@ -1,0 +1,82 @@
+---
+import Icon from "./Icon.astro";
+import type { iconPaths } from "./IconPaths";
+import Pill from "./Pill.astro";
+
+const sections: {
+  scope: string;
+  icon: keyof typeof iconPaths;
+}[] = [
+  { scope: "Software", icon: "code" },
+  { scope: "Music", icon: "music" },
+];
+---
+
+<work-nav>
+  <div class="flex gap-2">
+    {
+      sections.map(({ scope, icon }) => (
+        <button data-scope={scope.toLowerCase()}>
+          <Pill>
+            <Icon icon={icon} size="1.33em" /> {scope}
+          </Pill>
+        </button>
+      ))
+    }
+  </div>
+</work-nav>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    class WorkNav extends HTMLElement {
+      constructor() {
+        super();
+
+        const work = document.querySelector("#work")!;
+        const buttons = this.querySelectorAll("button")!;
+
+        // Scope setter function
+        const setScope = (scope: "software" | "music") => {
+          // Set button and Pill style
+          [...buttons].map((button) => {
+            button.classList.remove("active");
+            button.querySelector("div")?.classList.add("inactive");
+            const buttonScope = button.getAttribute("data-scope");
+            if (buttonScope == scope) {
+              button.classList.add("active");
+              button.querySelector("div")?.classList.remove("inactive");
+            }
+          });
+
+          // Set content style
+          work.classList.remove("software", "music");
+          work.classList.add(scope);
+        };
+
+        // Set the scope on button click
+        [...buttons].map((button) => {
+          button.addEventListener("click", () => {
+            const buttonScope = button.getAttribute("data-scope");
+            if (buttonScope == "software" || buttonScope == "music") {
+              setScope(buttonScope);
+            }
+          });
+        });
+
+        // Initialize scope state
+        setScope("software");
+      }
+    }
+    if (customElements.get("work-nav") === undefined) {
+      customElements.define("work-nav", WorkNav);
+    }
+  });
+</script>
+
+<style>
+  .active {
+    pointer-events: none;
+    cursor: default;
+    color: var(--gray-0);
+  }
+</style>

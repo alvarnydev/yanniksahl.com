@@ -4,13 +4,17 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 import ContactCTA from "../components/ContactCTA.astro";
-import PortfolioPreview from "../components/PortfolioPreview.astro";
 import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
-import { fade } from "astro:transitions";
 import animation from "@/utils/animations";
+import WorkNav from "@/components/WorkNav.astro";
+import DevPreview from "../components/DevPreview.astro";
+import MusicPreview from "@/components/MusicPreview.astro";
 
-const projects = (await getCollection("work")).sort(
+const dev = (await getCollection("dev")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+const music = (await getCollection("music")).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
 ---
@@ -19,23 +23,49 @@ const projects = (await getCollection("work")).sort(
   title="My Work | Yannik Sahl"
   description="Learn about Yannik Sahl's most recent projects"
 >
-  <div transition:animate={animation} class="stack gap-20">
+  <div id="work" transition:animate={animation} class="stack gap-20 software">
     <main class="wrapper stack gap-8">
       <Hero
         title="My Work"
         tagline="See my most recent projects below to get an idea of my past experience."
         align="start"
-      />
-      <Grid variant="offset">
-        {
-          projects.map((project) => (
-            <li>
-              <PortfolioPreview project={project} />
-            </li>
-          ))
-        }
-      </Grid>
+      >
+        <!-- <WorkNav /> -->
+      </Hero>
+      <div class="software">
+        <Grid variant="offset">
+          {
+            dev.map((project) => (
+              <li>
+                <DevPreview project={project} />
+              </li>
+            ))
+          }
+        </Grid>
+      </div>
+      <div class="music">
+        <Grid variant="offset">
+          {
+            music.map((project) => (
+              <li>
+                <MusicPreview project={project} />
+              </li>
+            ))
+          }
+        </Grid>
+      </div>
     </main>
     <ContactCTA />
   </div>
 </BaseLayout>
+
+<style>
+  #work .music,
+  #work .software {
+    display: none;
+  }
+  #work.software .software,
+  #work.music .music {
+    display: block;
+  }
+</style>
