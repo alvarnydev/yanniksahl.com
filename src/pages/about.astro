@@ -4,6 +4,54 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactCTA from "../components/ContactCTA.astro";
 import Hero from "../components/Hero.astro";
 import animation from "@/utils/animations";
+import DegreeCard from "@/components/DegreeCard.astro";
+import type { Degree, Experience } from "@/types";
+
+const degrees: Degree[] = [
+  {
+    title: "B.Sc. Computer Engineering",
+    image: "/assets/computer.webp",
+    when: "2018 to 2020",
+    where: "Studied for 4 semesters at HTW Berlin",
+    special:
+      "Specialization in advanced programming, embedded systems and IT security",
+    grade: "Graduated with a final grade of 1.5",
+  },
+  {
+    title: "B.Sc. Business Administration",
+    image: "/assets/business.webp",
+    when: "2015 to 2018",
+    where:
+      "Studied for 5 semesters at FU Berlin and spent one semester abroad at UNAV in Pamplona, Spain",
+    special:
+      "Specialization in finance, management accounting and business informatics",
+    grade: "Graduated with a final grade of 2.0",
+  },
+];
+
+const experiences: Experience[] = [
+  {
+    role: "Software Development",
+    when: "10/2023 to 01/2024",
+    where: "Darmstadt",
+    company: "TU Darmstadt",
+    tasks: "",
+  },
+  {
+    role: "Software Development",
+    when: "10/2023 to 01/2024",
+    where: "Darmstadt",
+    company: "TU Darmstadt",
+    tasks: "",
+  },
+  {
+    role: "Software Development",
+    when: "10/2023 to 01/2024",
+    where: "Darmstadt",
+    company: "TU Darmstadt",
+    tasks: "",
+  },
+];
 ---
 
 <BaseLayout title="About | Yannik Sahl" description="About Yannik Sahl">
@@ -36,59 +84,10 @@ import animation from "@/utils/animations";
         <h2 class="section-title">Education</h2>
         <div class="content">
           <p class="mb-4 sm:mb-8">
-            I've completed two Bachelor programs in the following fields:
+            I've completed two Bachelor programs in the following fields (click
+            for more info):
           </p>
-          <div
-            class="edu-card relative text-[#c3cadb] rounded-3xl py-4 px-6 md:py-6 md:px-8 mb-4 sm:mb-8 border-[1px] border-[var(--gray-800)] overflow-hidden"
-          >
-            <div
-              class="image absolute top-0 left-0 rounded-3xl h-full w-full -z-10"
-            >
-              <img
-                src="/assets/computer.webp"
-                class="!m-0 object-cover object-center w-full h-full blur-sm"
-              />
-            </div>
-            <div class="flex justify-between pb-4">
-              <p>B.Sc. Computer Engineering</p>
-              <p><i>2018 to 2020</i></p>
-            </div>
-            <ul class="pl-8 list-disc">
-              <li class="pb-2">Studied for 4 semesters at HTW Berlin</li>
-              <li class="pb-2">
-                Specialization in advanced programming, embedded systems and IT
-                security
-              </li>
-              <li>Graduated with a final grade of 1.5</li>
-            </ul>
-          </div>
-          <div
-            class="edu-card relative text-[#c3cadb] rounded-3xl py-4 px-6 md:py-6 md:px-8 mb-8 border-[1px] border-[var(--gray-800)] overflow-hidden"
-          >
-            <div
-              class="image absolute top-0 left-0 rounded-3xl h-full w-full -z-10"
-            >
-              <img
-                src="/assets/business.webp"
-                class="!m-0 object-cover object-bottom w-full h-full blur-sm"
-              />
-            </div>
-            <div class="flex justify-between pb-4">
-              <p>B.Sc. Business Administration</p>
-              <p><i>2015 to 2018</i></p>
-            </div>
-            <ul class="pl-8 list-disc">
-              <li class="pb-2">
-                Studied for 5 semesters at FU Berlin and spent one semester
-                abroad at UNAV in Pamplona, Spain
-              </li>
-              <li class="pb-2">
-                Specialization in finance, management accounting and business
-                informatics
-              </li>
-              <li>Graduated with a final grade of 2.0</li>
-            </ul>
-          </div>
+          {degrees.map((degree) => <DegreeCard degree={degree} />)}
           <p>
             I'm also a qualified E.M.T. which is a skill I picked up in 2022 and
             briefly worked as in 2023.
@@ -112,20 +111,6 @@ import animation from "@/utils/animations";
   </div>
 
   <style>
-    .image:after {
-      content: "\A";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: rgba(0, 0, 0, 0.5);
-      transition: all 0.5s;
-      -webkit-transition: all 0.5s;
-    }
-    .edu-card:hover .image:after {
-      background: rgba(0, 0, 0, 0.2);
-    }
     .about {
       display: flex;
       flex-direction: column;
@@ -183,27 +168,4 @@ import animation from "@/utils/animations";
       }
     }
   </style>
-
-  <!-- const about = await getCollection("about");
-const sections = await Promise.all(
-  about.map(async (item) => {
-    const { Content } = await item.render();
-    return {
-      title: item.slug,
-      content: Content,
-    };
-  }),
-); -->
-
-  <!-- 
-      {
-        sections.map((section) => (
-          <section>
-            <h2 class="section-title">{section.title}</h2>
-            <div class="content">
-              <section.content />
-            </div>
-          </section>
-        )) 
-      }-->
 </BaseLayout>
