@@ -5,7 +5,7 @@ import ContactCTA from "../components/ContactCTA.astro";
 import Hero from "../components/Hero.astro";
 import animation from "@/utils/animations";
 import DegreeCard from "@/components/DegreeCard.astro";
-import type { Degree, Experience } from "@/types";
+import type { Degree, Experience, Skill } from "@/types";
 
 const degrees: Degree[] = [
   {
@@ -31,25 +31,102 @@ const degrees: Degree[] = [
 
 const experiences: Experience[] = [
   {
-    role: "Software Development",
+    role: "Web Developer",
+    when: "since 02/2024",
+    where: "Frankfurt",
+    company: "byte5 GmbH",
+    tasks: "",
+  },
+  {
+    role: "Web Developer",
     when: "10/2023 to 01/2024",
     where: "Darmstadt",
     company: "TU Darmstadt",
     tasks: "",
   },
   {
-    role: "Software Development",
-    when: "10/2023 to 01/2024",
-    where: "Darmstadt",
-    company: "TU Darmstadt",
+    role: "System Administration & Support",
+    when: "2019 to 2020",
+    where: "Berlin",
+    company: "HTW Berlin",
     tasks: "",
   },
   {
     role: "Software Development",
-    when: "10/2023 to 01/2024",
-    where: "Darmstadt",
-    company: "TU Darmstadt",
+    when: "2018",
+    where: "Berlin",
+    company: "prudsys AG",
     tasks: "",
+  },
+];
+
+const skills: Skill[] = [
+  {
+    field: "Languages",
+    fieldSkill: [
+      {
+        name: "HTML",
+        icon: "",
+      },
+      {
+        name: "CSS",
+        icon: "",
+      },
+      {
+        name: "C#",
+        icon: "",
+      },
+      {
+        name: "JavaScript",
+        icon: "",
+      },
+      {
+        name: "TypeScript",
+        icon: "",
+      },
+    ],
+  },
+  {
+    field: "Frameworks",
+    fieldSkill: [
+      {
+        name: "ASP.NET",
+        icon: "",
+      },
+      {
+        name: "Astro",
+        icon: "",
+      },
+      {
+        name: "React",
+        icon: "",
+      },
+      {
+        name: "Next.js",
+        icon: "",
+      },
+    ],
+  },
+  {
+    field: "Complementary",
+    fieldSkill: [
+      {
+        name: "Git",
+        icon: "",
+      },
+      {
+        name: "Docker",
+        icon: "",
+      },
+      {
+        name: "Tailwind",
+        icon: "",
+      },
+      {
+        name: "WordPress",
+        icon: "",
+      },
+    ],
   },
 ];
 ---

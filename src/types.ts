@@ -14,3 +14,11 @@ export interface Experience {
   company: string;
   tasks: string;
 }
+
+export interface Skill {
+  field: string;
+  fieldSkill: {
+    name: string;
+    icon: string;
+  }[];
+}
