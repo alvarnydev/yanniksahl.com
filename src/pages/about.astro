@@ -4,9 +4,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactCTA from "../components/ContactCTA.astro";
 import Hero from "../components/Hero.astro";
 import animation from "@/utils/animations";
-import DegreeCard from "@/components/DegreeCard.astro";
+import DegreeCard from "@/components/about/DegreeCard.astro";
 import type { Degree, Experience, Skill } from "@/types";
-import ExperienceEntry from "@/components/ExperienceEntry.astro";
+import ExperienceEntry from "@/components/about/ExperienceEntry.astro";
+import SkillCard from "@/components/about/SkillCard.astro";
 
 const degrees: Degree[] = [
   {
@@ -32,29 +33,28 @@ const degrees: Degree[] = [
 
 const experiences: Experience[] = [
   {
-    role: "Web Developer",
+    role: "👨‍💻 Web Developer",
     when: "since Feburary 2024",
     where: "Frankfurt",
     company: "byte5 GmbH",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "-",
   },
   {
-    role: "Web Developer",
+    role: "👨‍💻 Web Developer",
     when: "Oktober 2023 to January 2024",
     where: "Darmstadt",
     company: "TU Darmstadt",
     description: "-",
   },
   {
-    role: "Emergency Medial Technician",
+    role: "Emergency Medical Technician",
     when: "Oktober 2022 to September 2023",
     where: "Berlin",
-    company: "Johanniter e.V. & DRK e.V.",
+    company: "Johanniter e.V.",
     description: "-",
   },
   {
-    role: "Remedial Teacher",
+    role: "Teacher",
     when: "March 2022 to September 2022",
     where: "Berlin",
     company: "Intellego GmbH",
@@ -66,17 +66,17 @@ const experiences: Experience[] = [
     where: "Berlin",
     company: "self-employed",
     description:
-      "After finishing my studies near the end of 2021, I decided to take a break from IT and make use of my electrical engineering skills. Repairing broken devices (mostly consoles and smartphones) was a challenging but fun endeavour 🔬",
+      "After finishing my studies near the end of 2021, I decided to take a break from IT and make use of my electrical engineering skills. Repairing broken devices (mostly consoles and smartphones) was a challenging but fun endeavour.",
   },
   {
-    role: "System Administration & Support",
+    role: "👨‍💻 System Administration & Support",
     when: "April 2019 to January 2020",
     where: "Berlin",
     company: "HTW Berlin",
     description: "-",
   },
   {
-    role: "Software Development",
+    role: "👨‍💻 Software Development",
     when: "March 2018 to October 2018",
     where: "Berlin",
     company: "prudsys AG",
@@ -87,68 +87,103 @@ const experiences: Experience[] = [
 const skills: Skill[] = [
   {
     field: "Languages",
+    description: "Template, styling or programming language? They all go here.",
     fieldSkill: [
       {
+        name: "JavaScript",
+        icon: "microphone",
+        link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        xp: 90,
+      },
+      {
         name: "HTML",
-        icon: "",
+        icon: "microphone",
+        link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+        xp: 85,
       },
       {
         name: "CSS",
-        icon: "",
-      },
-      {
-        name: "C#",
-        icon: "",
-      },
-      {
-        name: "JavaScript",
-        icon: "",
+        icon: "microphone",
+        link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+        xp: 80,
       },
       {
         name: "TypeScript",
-        icon: "",
+        icon: "typescript",
+        link: "https://www.typescriptlang.org/",
+        xp: 70,
+      },
+      {
+        name: "C#",
+        icon: "microphone",
+        link: "https://dotnet.microsoft.com/en-us/languages/csharp",
+        xp: 50,
+      },
+      {
+        name: "Python",
+        icon: "microphone",
+        link: "https://www.python.org/",
+        xp: 30,
       },
     ],
   },
   {
     field: "Frameworks",
+    description: "The frameworks I've most commonly used over the years.",
     fieldSkill: [
       {
-        name: "ASP.NET",
-        icon: "",
+        name: "React",
+        icon: "microphone",
+        link: "https://react.dev/",
+        xp: 85,
       },
       {
         name: "Astro",
-        icon: "",
-      },
-      {
-        name: "React",
-        icon: "",
+        icon: "microphone",
+        link: "https://astro.build/",
+        xp: 50,
       },
       {
         name: "Next.js",
-        icon: "",
+        icon: "microphone",
+        link: "https://nextjs.org/",
+        xp: 50,
+      },
+      {
+        name: "ASP.NET",
+        icon: "microphone",
+        link: "https://dotnet.microsoft.com/en-us/apps/aspnet",
+        xp: 40,
       },
     ],
   },
   {
     field: "Complementary",
+    description: "Technology that complemented my programming journey.",
     fieldSkill: [
       {
         name: "Git",
-        icon: "",
-      },
-      {
-        name: "Docker",
-        icon: "",
+        icon: "microphone",
+        link: "https://git-scm.com/",
+        xp: 90,
       },
       {
         name: "Tailwind",
-        icon: "",
+        icon: "microphone",
+        link: "https://tailwindcss.com/",
+        xp: 90,
+      },
+      {
+        name: "Docker",
+        icon: "microphone",
+        link: "https://www.docker.com/",
+        xp: 60,
       },
       {
         name: "WordPress",
-        icon: "",
+        icon: "microphone",
+        link: "https://wordpress.org/",
+        xp: 50,
       },
     ],
   },
@@ -162,6 +197,17 @@ const skills: Skill[] = [
         title="About"
         tagline="Thanks for stopping by! Read below to learn more about myself and my background."
       />
+      <section>
+        <h2 class="section-title">Skills</h2>
+        <div class="content">
+          <p class="mb-6 sm:mb-8">
+            The following cards show the technology I'm most proficient in:
+          </p>
+          <div class="w-11/12 mx-auto">
+            {skills.map((skill) => <SkillCard skill={skill} />)}
+          </div>
+        </div>
+      </section>
       <section>
         <h2 class="section-title">Background</h2>
         <div class="content">
@@ -181,15 +227,14 @@ const skills: Skill[] = [
       <section>
         <h2 class="section-title">Education</h2>
         <div class="content">
-          <p class="mb-4 sm:mb-8">
-            I've completed two Bachelor programs in the following fields. You
-            can click them for more information:
+          <p class="mb-6 sm:mb-8">
+            I've completed two Bachelor programs and underwent training to
+            become an EMT. For more information about my degrees, click the
+            following cards:
           </p>
-          {degrees.map((degree) => <DegreeCard degree={degree} />)}
-          <p class="mt-8 md:mt-4">
-            I'm also a qualified E.M.T. which is a skill I picked up in 2022 and
-            briefly worked as in 2023.
-          </p>
+          <div class="w-11/12 mx-auto">
+            {degrees.map((degree) => <DegreeCard degree={degree} />)}
+          </div>
         </div>
       </section>
       <section>
@@ -197,22 +242,18 @@ const skills: Skill[] = [
         <div class="content">
           <p class="mb-6 md:mb-8">
             While I've worked mostly in the IT field, I've been absent from my
-            computer from 2021 to 2023 working very different jobs or travelling
-            to see what else is there.
+            computer from 2021 to 2023 working very different jobs and/or
+            travelling.
           </p>
-          <ol class="relative border-s border-[var(--gray-700)] w-11/12 m-auto">
+          <ol
+            class="relative border-s p-4 rounded-3xl border-[var(--gray-700)] w-11/12 mx-auto"
+          >
             {
               experiences.map((experience) => (
                 <ExperienceEntry experience={experience} />
               ))
             }
           </ol>
-        </div>
-      </section>
-      <section>
-        <h2 class="section-title">Skills</h2>
-        <div class="content">
-          <p>(Work in Progress)</p>
         </div>
       </section>
     </main>

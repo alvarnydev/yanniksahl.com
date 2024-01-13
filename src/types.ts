@@ -1,3 +1,6 @@
+import type { StringMappingType } from "typescript";
+import type { iconPaths } from "./components/IconPaths";
+
 export type WorkScope = "business" | "software" | "music";
 
 export interface Degree {
@@ -19,8 +22,11 @@ export interface Experience {
 
 export interface Skill {
   field: string;
+  description: string;
   fieldSkill: {
     name: string;
-    icon: string;
+    link: string;
+    xp: number;
+    icon: keyof typeof iconPaths;
   }[];
 }

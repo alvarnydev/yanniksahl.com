@@ -1,0 +1,40 @@
+---
+import type { Skill } from "@/types";
+import Icon from "../Icon.astro";
+interface Props {
+  skill: Skill;
+}
+
+const { skill } = Astro.props;
+---
+
+<div
+  class="inline-block align-top mb-4 mr-4 w-96 p-4 bg-[var(--gray-900)] border border-[var(--gray-600)] rounded-lg shadow sm:p-6"
+>
+  <h5 class="mb-3 text-base font-semibold text-[var(--gray-100)] md:text-xl">
+    {skill.field}
+  </h5>
+  <p class="text-sm font-normal text-[var(--gray-500)]">
+    {skill.description}
+  </p>
+  <ul class="mb-2 mt-4 space-y-3">
+    {
+      skill.fieldSkill.map((singleSkill) => (
+        <li>
+          <a
+            href={singleSkill.link}
+            target="_blank"
+            class="flex items-center py-3 px-4 text-base font-bold text-[var(--gray-100)] rounded-lg bg-[var(--gray-800)] hover:bg-[var(--gray-500)] group hover:shadow "
+          >
+            <Icon icon={singleSkill.icon} />
+
+            <span class="flex-1 ms-3 whitespace-nowrap">
+              {singleSkill.name}
+            </span>
+            <div class="border-2 w-6 h-6 border-[var(--var-gray-200)] rounded-full p-1 text-sm" />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
