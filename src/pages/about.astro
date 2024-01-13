@@ -85,103 +85,125 @@ const experiences: Experience[] = [
 
 const skills: Skill[] = [
   {
-    field: "Languages",
+    field: "Languages 👾",
     description: "Template, styling or programming language? They all go here.",
     fieldSkill: [
       {
         name: "JavaScript",
-        icon: "microphone",
+        icon: "javascript",
         link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-        xp: 90,
+        color: "#F0DB4E",
+        xp: 95,
       },
       {
         name: "HTML",
-        icon: "microphone",
+        icon: "html",
         link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
-        xp: 85,
+        color: "#E5532D",
+        xp: 90,
       },
       {
         name: "CSS",
-        icon: "microphone",
+        icon: "css",
         link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
-        xp: 80,
+        color: "#39ACDD",
+        xp: 85,
       },
       {
         name: "TypeScript",
         icon: "typescript",
         link: "https://www.typescriptlang.org/",
-        xp: 70,
+        color: "#3178C6",
+        xp: 80,
       },
       {
         name: "C#",
-        icon: "microphone",
+        icon: "csharp",
         link: "https://dotnet.microsoft.com/en-us/languages/csharp",
-        xp: 50,
+        color: "#ac99ea",
+        xp: 75,
       },
       {
         name: "Python",
-        icon: "microphone",
+        icon: "python",
         link: "https://www.python.org/",
+        color: "#F7CC42",
         xp: 30,
+      },
+      {
+        name: "Java",
+        icon: "java",
+        link: "https://www.oracle.com/java/",
+        color: "#F58620",
+        xp: 25,
       },
     ],
   },
   {
-    field: "Frameworks",
+    field: "Frameworks 🏗️",
     description: "The frameworks I've most commonly used over the years.",
     fieldSkill: [
       {
         name: "React",
-        icon: "microphone",
+        icon: "react",
         link: "https://react.dev/",
-        xp: 85,
+        color: "#149ECA",
+        xp: 90,
       },
       {
         name: "Astro",
-        icon: "microphone",
+        icon: "astro",
         link: "https://astro.build/",
-        xp: 50,
+        color: "#761DE9",
+        xp: 60,
       },
       {
         name: "Next.js",
-        icon: "microphone",
+        icon: "nextjs",
         link: "https://nextjs.org/",
+        color: "#000",
         xp: 50,
       },
       {
         name: "ASP.NET",
-        icon: "microphone",
+        icon: "aspnet",
         link: "https://dotnet.microsoft.com/en-us/apps/aspnet",
+        color: "#1587C8",
         xp: 40,
       },
     ],
   },
   {
-    field: "Complementary",
-    description: "Technology that complemented my programming journey.",
+    field: "Complementary ✨",
+    description: "Technology that complements my programming journey.",
     fieldSkill: [
       {
-        name: "Git",
-        icon: "microphone",
-        link: "https://git-scm.com/",
-        xp: 90,
+        name: "Tailwind",
+        icon: "tailwind",
+        link: "https://tailwindcss.com/",
+        color: "#38BDF8",
+        xp: 95,
       },
       {
-        name: "Tailwind",
-        icon: "microphone",
-        link: "https://tailwindcss.com/",
+        name: "Git",
+        icon: "git",
+        link: "https://git-scm.com/",
+        color: "#F64D27",
         xp: 90,
       },
+
       {
         name: "Docker",
-        icon: "microphone",
+        icon: "docker",
         link: "https://www.docker.com/",
+        color: "#1D63ED",
         xp: 60,
       },
       {
         name: "WordPress",
-        icon: "microphone",
+        icon: "wordpress",
         link: "https://wordpress.org/",
+        color: "#ffffff",
         xp: 50,
       },
     ],
@@ -200,16 +222,12 @@ const skills: Skill[] = [
       <section>
         <h2 class="section-title">Background</h2>
         <div class="content">
-          <p class="pb-2">
+          <p class="">
             I like computers, they’re magical. And I like music, it’s the most
             beautiful language I know. Every day I strive to become a little bit
             better at each of them, combining them whenever I can. I also like
             to think that I have an eye for design and aesthetics, as I always
             strive to make the UI/UX as good an experience as I can.
-          </p>
-          <p>
-            That's basically me. Read more about my education, experiences and
-            skills below ⬇️
           </p>
         </div>
       </section>
@@ -249,9 +267,12 @@ const skills: Skill[] = [
         <h2 class="section-title">Skills</h2>
         <div class="content">
           <p class="mb-6 sm:mb-8">
-            The following cards show the technology I'm most proficient in:
+            This is the tech I most often use in my programming, ranked by
+            proficiency:
           </p>
-          <div class="w-11/12 mx-auto">
+          <div
+            class="w-11/12 mx-auto p-4 bg-[var(--gray-900)] border border-[var(--gray-600)] rounded-lg shadow sm:p-6 space-y-8"
+          >
             {skills.map((skill) => <SkillCard skill={skill} />)}
           </div>
         </div>
@@ -289,17 +310,6 @@ const skills: Skill[] = [
 
     .content {
       grid-column: 2 / 4;
-    }
-
-    .content :global(a) {
-      text-decoration: 1px solid underline transparent;
-      text-underline-offset: 0.25em;
-      transition: text-decoration-color var(--theme-transition);
-    }
-
-    .content :global(a:hover),
-    .content :global(a:focus) {
-      text-decoration-color: currentColor;
     }
 
     @media (min-width: 50em) {

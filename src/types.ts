@@ -27,6 +27,7 @@ export interface Skill {
     name: string;
     link: string;
     xp: number;
+    color: string;
     icon: keyof typeof iconPaths;
   }[];
 }

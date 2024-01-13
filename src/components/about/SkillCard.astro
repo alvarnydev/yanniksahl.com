@@ -8,9 +8,7 @@ interface Props {
 const { skill } = Astro.props;
 ---
 
-<div
-  class="inline-block align-top mb-4 mr-4 w-96 p-4 bg-[var(--gray-900)] border border-[var(--gray-600)] rounded-lg shadow sm:p-6"
->
+<div class="">
   <h5 class="mb-3 text-base font-semibold text-[var(--gray-100)] md:text-xl">
     {skill.field}
   </h5>
@@ -26,15 +24,51 @@ const { skill } = Astro.props;
             target="_blank"
             class="flex items-center py-3 px-4 text-base font-bold text-[var(--gray-100)] rounded-lg bg-[var(--gray-800)] hover:bg-[var(--gray-500)] group hover:shadow "
           >
-            <Icon icon={singleSkill.icon} />
+            <Icon
+              icon={singleSkill.icon}
+              viewBox={
+                singleSkill.icon !== "astro" ? "0 0 128 128" : "0 0 85 107"
+              }
+            />
 
-            <span class="flex-1 ms-3 whitespace-nowrap">
+            <span id="skillname" class="flex-1 ms-3 whitespace-nowrap">
               {singleSkill.name}
             </span>
-            <div class="border-2 w-6 h-6 border-[var(--var-gray-200)] rounded-full p-1 text-sm" />
+            <div class="flex-1 flex-grow-[3] w-full bg-[var(--gray-900)] rounded-full h-2.5 hidden sm:block">
+              <div
+                class="h-2.5 rounded-full"
+                style={`width: ${singleSkill.xp}%; background-color: ${singleSkill.color}`}
+              />
+            </div>
+            <div class="flex items-center gap-2 sm:hidden">
+              <span
+                class="text-sm hover:!decoration-transparent"
+                style={`color: ${singleSkill.color}`}
+              >
+                {singleSkill.xp}%
+              </span>
+            </div>
           </a>
         </li>
       ))
     }
   </ul>
 </div>
+
+<style>
+  a #skillname {
+    text-decoration: 1px solid underline transparent;
+    text-underline-offset: 0.25em;
+    transition: text-decoration-color var(--theme-transition);
+  }
+
+  a:hover #skillname,
+  a:hover #skillname {
+    text-decoration-color: currentColor;
+  }
+</style>
+
+<!-- <div
+  class="border-4 w-6 h-6 border-[var(--var-gray-200)] rounded-full p-1 text-sm "
+  style={`border-color: ${singleSkill.color}`}
+/> -->
