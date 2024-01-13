@@ -9,16 +9,20 @@ import Icon from "../../components/Icon.astro";
 import Pill from "../../components/Pill.astro";
 
 interface Props {
-  entry: CollectionEntry<"dev"> | CollectionEntry<"music">;
+  entry:
+    | CollectionEntry<"software">
+    | CollectionEntry<"music">
+    | CollectionEntry<"business">;
 }
 
 // This is a dynamic route that generates a page for every Markdown file in src/content/
 // Read more about dynamic routes and this `getStaticPaths` function in the Astro docs:
 // https://docs.astro.build/en/core-concepts/routing/#dynamic-routes
 export async function getStaticPaths() {
-  const dev = await getCollection("dev");
+  const business = await getCollection("business");
+  const dev = await getCollection("software");
   const music = await getCollection("music");
-  const work = [...dev, ...music];
+  const work = [...business, ...dev, ...music];
   return work.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
@@ -37,7 +41,10 @@ const { Content } = await entry.render();
     <div class="stack gap-15">
       <header>
         <div class="wrapper stack gap-2">
-          <a class="back-link" href="/work/"><Icon icon="arrow-left" /> Work</a>
+          <a class="back-link" href="/work/"
+            ><Icon icon="arrow-left" />
+            <p class="work-scope">{entry.collection}</p></a
+          >
           <Hero title={entry.data.title} align="start">
             <div class="details">
               <div class="tags">
@@ -72,6 +79,13 @@ const { Content } = await entry.render();
   </div>
 </BaseLayout>
 
+<script is:inline>
+  document.addEventListener("astro:before-swap", (ev) => {
+    const workScope = document.querySelector(".work-scope").innerHTML;
+    ev.newDocument.querySelector("#work").setAttribute("data-scope", workScope);
+  });
+</script>
+
 <style>
   header {
     padding-bottom: 2.5rem;
@@ -80,6 +94,9 @@ const { Content } = await entry.render();
 
   .back-link {
     display: none;
+  }
+  .work-scope {
+    text-transform: capitalize;
   }
 
   .details {

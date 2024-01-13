@@ -1,14 +1,16 @@
 ---
-import Icon from "./Icon.astro";
+import type { WorkScope } from "@/types";
 import type { iconPaths } from "./IconPaths";
+import Icon from "./Icon.astro";
 import Pill from "./Pill.astro";
 
 const sections: {
-  scope: string;
+  scope: WorkScope;
   icon: keyof typeof iconPaths;
 }[] = [
-  { scope: "Software", icon: "code" },
-  { scope: "Music", icon: "music" },
+  { scope: "business", icon: "rocket" },
+  { scope: "software", icon: "code" },
+  { scope: "music", icon: "music" },
 ];
 ---
 
@@ -16,7 +18,7 @@ const sections: {
   <div class="flex gap-2">
     {
       sections.map(({ scope, icon }) => (
-        <button data-scope={scope.toLowerCase()}>
+        <button data-scope={scope}>
           <Pill>
             <Icon icon={icon} size="1.33em" /> {scope}
           </Pill>
@@ -27,6 +29,9 @@ const sections: {
 </work-nav>
 
 <script>
+  import type { WorkScope } from "@/types";
+  const scopes = ["business", "music", "software"];
+
   document.addEventListener("astro:page-load", () => {
     class WorkNav extends HTMLElement {
       constructor() {
@@ -36,11 +41,12 @@ const sections: {
         const buttons = this.querySelectorAll("button")!;
 
         // Scope setter function
-        const setScope = (scope: "software" | "music") => {
+        const setScope = (scope: WorkScope) => {
           // Set button and Pill style
           [...buttons].map((button) => {
             button.classList.remove("active");
             button.querySelector("div")?.classList.add("inactive");
+
             const buttonScope = button.getAttribute("data-scope");
             if (buttonScope == scope) {
               button.classList.add("active");
@@ -48,23 +54,32 @@ const sections: {
             }
           });
 
-          // Set content style
-          work.classList.remove("software", "music");
-          work.classList.add(scope);
+          work.setAttribute("data-scope", scope);
+        };
+
+        const isWorkScope = (scope: string | null): boolean => {
+          if (!scope) return false;
+          if (!scopes.includes(scope)) return false;
+          return true;
         };
 
         // Set the scope on button click
         [...buttons].map((button) => {
           button.addEventListener("click", () => {
             const buttonScope = button.getAttribute("data-scope");
-            if (buttonScope == "software" || buttonScope == "music") {
-              setScope(buttonScope);
+            if (isWorkScope(buttonScope)) {
+              setScope(buttonScope as WorkScope);
             }
           });
         });
 
         // Initialize scope state
-        setScope("software");
+        const existingScope = document
+          .querySelector("#work")
+          ?.getAttribute("data-scope");
+        if (existingScope && isWorkScope(existingScope))
+          setScope(existingScope as WorkScope);
+        else setScope("software");
       }
     }
     if (customElements.get("work-nav") === undefined) {

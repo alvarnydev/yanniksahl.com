@@ -1,3 +1,5 @@
+export type WorkScope = "business" | "software" | "music";
+
 export interface Degree {
   title: string;
   image: string;

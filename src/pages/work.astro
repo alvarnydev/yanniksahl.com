@@ -8,22 +8,30 @@ import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
 import animation from "@/utils/animations";
 import WorkNav from "@/components/WorkNav.astro";
-import DevPreview from "../components/DevPreview.astro";
-import MusicPreview from "@/components/MusicPreview.astro";
+import WorkPreview from "../components/WorkPreview.astro";
 
-const dev = (await getCollection("dev")).sort(
+const business = (await getCollection("business")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+const software = (await getCollection("software")).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
 const music = (await getCollection("music")).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
+const scopes = [business, software, music];
 ---
 
 <BaseLayout
   title="My Work | Yannik Sahl"
   description="Learn about Yannik Sahl's most recent projects"
 >
-  <div id="work" transition:animate={animation} class="stack gap-20 software">
+  <div
+    id="work"
+    transition:animate={animation}
+    class="stack gap-20"
+    data-scope="software"
+  >
     <main class="wrapper stack gap-8">
       <Hero
         title="My Work"
@@ -32,28 +40,19 @@ const music = (await getCollection("music")).sort(
       >
         <!-- <WorkNav /> -->
       </Hero>
-      <div class="software">
-        <Grid variant="offset">
-          {
-            dev.map((project) => (
-              <li>
-                <DevPreview project={project} />
-              </li>
-            ))
-          }
-        </Grid>
-      </div>
-      <div class="music">
-        <Grid variant="offset">
-          {
-            music.map((project) => (
-              <li>
-                <MusicPreview project={project} />
-              </li>
-            ))
-          }
-        </Grid>
-      </div>
+      {
+        scopes.map((scope) => (
+          <div class={scope[0].collection}>
+            <Grid variant="offset">
+              {scope.map((project) => (
+                <li>
+                  <WorkPreview project={project} />
+                </li>
+              ))}
+            </Grid>
+          </div>
+        ))
+      }
     </main>
     <ContactCTA />
   </div>
@@ -61,11 +60,13 @@ const music = (await getCollection("music")).sort(
 
 <style>
   #work .music,
-  #work .software {
+  #work .software,
+  #work .business {
     display: none;
   }
-  #work.software .software,
-  #work.music .music {
+  #work[data-scope="software"] .software,
+  #work[data-scope="music"] .music,
+  #work[data-scope="business"] .business {
     display: block;
   }
 </style>
