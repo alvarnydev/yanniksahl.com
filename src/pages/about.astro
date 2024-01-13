@@ -23,8 +23,7 @@ const degrees: Degree[] = [
     title: "B.Sc. Business Administration",
     image: "/assets/business.webp",
     when: "2015 to 2018",
-    where:
-      "Studied for 5 semesters at FU Berlin and spent one semester abroad at UNAV in Pamplona, Spain",
+    where: "Studied for 5 semesters at FU Berlin",
     special:
       "Specialization in finance, management accounting and business informatics",
     grade: "Graduated with a final grade of 2.0",
@@ -222,7 +221,7 @@ const skills: Skill[] = [
             become an EMT. For more information about my degrees, click the
             following cards:
           </p>
-          <div class="w-11/12 mx-auto">
+          <div class="w-11/12 mx-auto flex gap-8 flex-col lg:flex-row">
             {degrees.map((degree) => <DegreeCard degree={degree} />)}
           </div>
         </div>
