@@ -226,20 +226,6 @@ const skills: Skill[] = [
         tagline="Thanks for stopping by! Read below to learn more about myself and my background."
       />
       <section>
-        <h2 class="section-title">Skills</h2>
-        <div class="content">
-          <p class="mb-6 sm:mb-8">
-            This is the tech I most often use in my programming, ranked by
-            proficiency:
-          </p>
-          <div
-            class="p-4 bg-[var(--gray-900)] border border-[var(--gray-600)] rounded-3xl shadow sm:p-6 space-y-8"
-          >
-            {skills.map((skill) => <SkillCard skill={skill} />)}
-          </div>
-        </div>
-      </section>
-      <section>
         <h2 class="section-title">Background</h2>
         <div class="content">
           <p class="">
@@ -264,7 +250,20 @@ const skills: Skill[] = [
           </div>
         </div>
       </section>
-
+      <section>
+        <h2 class="section-title">Skills</h2>
+        <div class="content">
+          <p class="mb-6 sm:mb-8">
+            This is the tech I most often use in my programming, ranked by
+            proficiency:
+          </p>
+          <div
+            class="p-4 bg-[var(--gray-900)] border border-[var(--gray-600)] rounded-3xl shadow sm:p-6 space-y-8"
+          >
+            {skills.map((skill) => <SkillCard skill={skill} />)}
+          </div>
+        </div>
+      </section>
       <section>
         <h2 class="section-title">Experience</h2>
         <div class="content">
