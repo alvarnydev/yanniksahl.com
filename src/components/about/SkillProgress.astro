@@ -1,0 +1,78 @@
+---
+interface Props {
+  progress: number;
+  color: string;
+}
+
+const { progress, color } = Astro.props;
+---
+
+<progress
+  max="100"
+  value={progress}
+  class="bar flex-1 flex-grow-[3] appearance-none rounded-full h-2.5 bg-[var(--gray-900)] hidden sm:block"
+>
+  {progress}
+</progress>
+<label
+  class="flex items-center gap-2 text-sm sm:hidden"
+  style={`color: ${color}`}
+>
+  <progress
+    max="100"
+    value={progress}
+    style={`"--p:${progress}%"`}
+    class="circle rounded-full">{progress}%</progress
+  >
+  {progress}%
+</label>
+
+<style define:vars={{ color, progress }}>
+  /* Bar progress */
+  progress.bar[value] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+  }
+  progress.bar[value]::-webkit-progress-bar {
+    border-radius: 9999px;
+    background: var(--gray-900);
+  }
+  progress.bar[value]::-webkit-progress-value {
+    border-radius: 9999px;
+    background: var(--color);
+  }
+  progress.bar[value]::-moz-progress-bar {
+    border-radius: 9999px;
+    background: var(--color);
+  }
+
+  /* Circle progress */
+  progress.circle[value] {
+    --colors: conic-gradient(
+      var(--color) calc(var(--progress) * 1%),
+      var(--gray-900) 0
+    );
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    inset: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--colors);
+    -webkit-mask: radial-gradient(#0000 0%, #000 0% 70%, #0000 71%);
+  }
+  progress.circle[value]::-webkit-progress-bar {
+    background: var(--colors);
+  }
+  progress.circle[value]::-webkit-progress-value {
+    background: #0000;
+  }
+  progress.circle[value]::-moz-progress-bar {
+    background: #0000;
+  }
+</style>

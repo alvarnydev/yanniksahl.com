@@ -1,6 +1,7 @@
 ---
 import type { Skill } from "@/types";
 import Icon from "../Icon.astro";
+import SkillProgress from "./SkillProgress.astro";
 interface Props {
   skill: Skill;
 }
@@ -30,24 +31,13 @@ const { skill } = Astro.props;
                 singleSkill.icon !== "astro" ? "0 0 128 128" : "0 0 85 107"
               }
             />
-
-            <span id="skillname" class="flex-1 ms-3 whitespace-nowrap">
+            <label id="skillname" class="flex-1 ms-3 whitespace-nowrap">
               {singleSkill.name}
-            </span>
-            <div class="flex-1 flex-grow-[3] w-full bg-[var(--gray-900)] rounded-full h-2.5 hidden sm:block">
-              <div
-                class="h-2.5 rounded-full"
-                style={`width: ${singleSkill.xp}%; background-color: ${singleSkill.color}`}
-              />
-            </div>
-            <div class="flex items-center gap-2 sm:hidden">
-              <span
-                class="text-sm hover:!decoration-transparent"
-                style={`color: ${singleSkill.color}`}
-              >
-                {singleSkill.xp}%
-              </span>
-            </div>
+            </label>
+            <SkillProgress
+              progress={singleSkill.xp}
+              color={singleSkill.color}
+            />
           </a>
         </li>
       ))
@@ -67,8 +57,3 @@ const { skill } = Astro.props;
     text-decoration-color: currentColor;
   }
 </style>
-
-<!-- <div
-  class="border-4 w-6 h-6 border-[var(--var-gray-200)] rounded-full p-1 text-sm "
-  style={`border-color: ${singleSkill.color}`}
-/> -->
