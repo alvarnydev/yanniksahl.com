@@ -146,7 +146,7 @@ const skills: Skill[] = [
   },
   {
     field: "Frameworks 🏗️",
-    description: "The frameworks I've most commonly used over the years.",
+    description: "Yes, I know React's not a framework.",
     fieldSkill: [
       {
         name: "React",
@@ -160,14 +160,14 @@ const skills: Skill[] = [
         icon: "astro",
         link: "https://astro.build/",
         color: "#761DE9",
-        xp: 60,
+        xp: 50,
       },
       {
         name: "Next.js",
         icon: "nextjs",
         link: "https://nextjs.org/",
         color: "#000",
-        xp: 50,
+        xp: 60,
       },
       {
         name: "ASP.NET",
@@ -177,11 +177,25 @@ const skills: Skill[] = [
         xp: 40,
       },
       {
+        name: "Express",
+        icon: "express",
+        link: "https://svelte.dev/",
+        color: "#fff",
+        xp: 30,
+      },
+      {
         name: "Svelte",
         icon: "svelte",
         link: "https://svelte.dev/",
         color: "#F96743",
         xp: 20,
+      },
+      {
+        name: "Nest.js",
+        icon: "nestjs",
+        link: "https://svelte.dev/",
+        color: "#E12954",
+        xp: 10,
       },
     ],
   },
@@ -203,7 +217,6 @@ const skills: Skill[] = [
         color: "#F64D27",
         xp: 90,
       },
-
       {
         name: "Docker",
         icon: "docker",
@@ -221,6 +234,10 @@ const skills: Skill[] = [
     ],
   },
 ];
+
+skills.forEach((skill) => {
+  skill.fieldSkill.sort((a, b) => b.xp - a.xp);
+});
 ---
 
 <BaseLayout title="About | Yannik Sahl" description="About Yannik Sahl">
