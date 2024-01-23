@@ -92,7 +92,7 @@ const iconLinks: {
       </div>
     </div>
   </noscript>
-  <div id="menu-content" hidden>
+  <div id="menu-content">
     <ul class="nav-items">
       {
         textLinks.map(({ label, href }) => (
@@ -145,18 +145,20 @@ const iconLinks: {
 
       // Hide menu (shown by default to support no-JS browsers).
       const menu = document.getElementById("menu-content")!;
-      menu.hidden = true;
+      menu.style.opacity = "0";
       // Add "menu-content" class in JS to avoid covering content in non-JS browsers.
       menu.classList.add("menu-content");
 
       /** Set whether the menu is currently expanded or collapsed. */
       const setExpanded = (expand: boolean) => {
         btn.setAttribute("aria-expanded", expand ? "true" : "false");
-        menu.hidden = !expand;
+        menu.style.opacity = expand ? "1" : "0";
       };
 
       // Toggle menu visibility when the menu button is clicked.
-      btn.addEventListener("click", () => setExpanded(menu.hidden));
+      btn.addEventListener("click", () =>
+        setExpanded(btn.getAttribute("aria-expanded") !== "true"),
+      );
 
       // Hide menu button for large screens.
       const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
@@ -185,6 +187,7 @@ const iconLinks: {
     justify-content: space-between;
     gap: 0.5rem;
     padding: 1.5rem;
+    transition: all var(--theme-transition);
   }
 
   .site-title {
@@ -206,12 +209,17 @@ const iconLinks: {
     color: var(--gray-300);
     background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
     box-shadow: var(--shadow-md);
+    transition: all var(--theme-transition);
   }
 
   .menu-button[aria-expanded="true"] {
     color: var(--gray-0);
     background: linear-gradient(180deg, var(--gray-600), transparent),
       radial-gradient(var(--gray-900), var(--gray-800) 150%);
+  }
+
+  .menu-header:has(.menu-button[aria-expanded="true"]) {
+    background-color: var(--gray-999);
   }
 
   .menu-button[hidden] {
@@ -231,6 +239,7 @@ const iconLinks: {
     position: absolute;
     left: 0;
     right: 0;
+    transition: all var(--theme-transition);
   }
 
   .nav-items {
@@ -241,7 +250,7 @@ const iconLinks: {
     font-size: var(--text-md);
     line-height: 1.2;
     list-style: none;
-    padding: 2rem;
+    padding: 0rem 2rem 2rem 4rem;
     background-color: var(--gray-999);
     border-bottom: 1px solid var(--gray-800);
   }
@@ -308,6 +317,9 @@ const iconLinks: {
 
     .menu-header {
       padding: 0;
+    }
+    .menu-header:has(.menu-button[aria-expanded="true"]) {
+      background-color: unset;
     }
 
     .site-title {
