@@ -8,14 +8,14 @@ const sections: {
   scope: WorkScope;
   icon: keyof typeof iconPaths;
 }[] = [
-  { scope: "business", icon: "rocket" },
+  { scope: "design", icon: "paint-brush" },
   { scope: "software", icon: "code" },
   { scope: "music", icon: "music" },
 ];
 ---
 
 <work-nav>
-  <div class="flex gap-2">
+  <div class="flex gap-2 pt-2">
     {
       sections.map(({ scope, icon }) => (
         <button data-scope={scope}>
@@ -30,7 +30,7 @@ const sections: {
 
 <script>
   import type { WorkScope } from "@/types";
-  const scopes = ["business", "music", "software"];
+  const scopes = ["design", "music", "software"];
 
   document.addEventListener("astro:page-load", () => {
     class WorkNav extends HTMLElement {
@@ -79,7 +79,7 @@ const sections: {
           ?.getAttribute("data-scope");
         if (existingScope && isWorkScope(existingScope))
           setScope(existingScope as WorkScope);
-        else setScope("software");
+        else setScope("design");
       }
     }
     if (customElements.get("work-nav") === undefined) {

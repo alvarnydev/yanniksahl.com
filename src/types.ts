@@ -1,7 +1,7 @@
 import type { StringMappingType } from "typescript";
 import type { iconPaths } from "./components/IconPaths";
 
-export type WorkScope = "business" | "software" | "music";
+export type WorkScope = "design" | "software" | "music";
 
 export interface Degree {
   title: string;

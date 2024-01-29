@@ -10,7 +10,7 @@ import animation from "@/utils/animations";
 import WorkNav from "@/components/WorkNav.astro";
 import WorkPreview from "../components/WorkPreview.astro";
 
-const business = (await getCollection("business")).sort(
+const design = (await getCollection("design")).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
 const software = (await getCollection("software")).sort(
@@ -19,7 +19,7 @@ const software = (await getCollection("software")).sort(
 const music = (await getCollection("music")).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
-const scopes = [business, software, music];
+const scopes = [design, software, music];
 ---
 
 <BaseLayout
@@ -30,7 +30,7 @@ const scopes = [business, software, music];
     id="work"
     transition:animate={animation}
     class="stack gap-20"
-    data-scope="software"
+    data-scope="design"
   >
     <main class="wrapper stack gap-8">
       <Hero
@@ -38,7 +38,7 @@ const scopes = [business, software, music];
         tagline="See my most recent projects below to get an idea of my past experience."
         align="start"
       >
-        <!-- <WorkNav /> -->
+        <WorkNav />
       </Hero>
       {
         scopes.map((scope) => (
@@ -61,12 +61,12 @@ const scopes = [business, software, music];
 <style>
   #work .music,
   #work .software,
-  #work .business {
+  #work .design {
     display: none;
   }
   #work[data-scope="software"] .software,
   #work[data-scope="music"] .music,
-  #work[data-scope="business"] .business {
+  #work[data-scope="design"] .design {
     display: block;
   }
 </style>
