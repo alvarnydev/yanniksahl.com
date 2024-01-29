@@ -43,7 +43,7 @@ const scopes = [design, software, music];
       {
         scopes.map((scope) => (
           <div class={scope[0].collection}>
-            <Grid variant="offset">
+            <Grid variant="offset" lenItems={scope.length}>
               {scope.map((project) => (
                 <li>
                   <WorkPreview project={project} />

@@ -19,7 +19,7 @@ const { data, slug } = Astro.props.project;
     {
       data.scope.map((item) => (
         <div class="scope">
-          <Icon icon={item.toLocaleLowerCase() as keyof typeof iconPaths} />
+          <Icon icon={item.toLowerCase() as keyof typeof iconPaths} />
         </div>
       ))
     }

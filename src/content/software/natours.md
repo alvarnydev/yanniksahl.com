@@ -2,6 +2,7 @@
 title: Natours
 scope:
   - Design
+  - Design
   - Software
 publishDate: 2021-03-02 00:00:00
 img: /assets/natours.webp
