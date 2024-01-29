@@ -4,6 +4,7 @@ const designCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    scope: z.array(z.string()),
     description: z.string(),
     publishDate: z.coerce.date(),
     tags: z.array(z.string()),
@@ -17,6 +18,7 @@ const softwareCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    scope: z.array(z.string()),
     description: z.string(),
     publishDate: z.coerce.date(),
     tags: z.array(z.string()),
@@ -30,6 +32,7 @@ const musicCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    scope: z.array(z.string()),
     description: z.string(),
     publishDate: z.coerce.date(),
     tags: z.array(z.string()),
