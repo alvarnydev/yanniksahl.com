@@ -65,4 +65,46 @@ const {
       observer.disconnect();
     });
   });
+
+  document.addEventListener("astro:page-load", () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.05,
+    };
+
+    function observerCallback(
+      entries: IntersectionObserverEntry[],
+      observer: IntersectionObserver,
+    ) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (entry.target instanceof HTMLElement) {
+            entry.target.classList.replace("fade-out", "fade-in");
+          }
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
+
+    // Take every element that's displayed in <main>'s parent and fade it (except for special cases)
+    const mainEl = document.querySelector("main");
+    const fadeEls = mainEl?.parentElement?.querySelectorAll("*");
+    fadeEls?.forEach((el) => {
+      if (el instanceof HTMLElement) {
+        if (el.classList.contains("detail")) return;
+        if (el.classList.contains("summary")) return;
+        el.classList.add("fade-out", "fade");
+        observer.observe(el);
+      }
+    });
+
+    document.addEventListener("astro:before-preparation", () => {
+      observer.disconnect();
+    });
+  });
 </script>

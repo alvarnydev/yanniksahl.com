@@ -45,7 +45,7 @@ const scopes = [design, software, music];
           <div class={scope[0].collection}>
             <Grid variant="offset" lenItems={scope.length}>
               {scope.map((project) => (
-                <li>
+                <li class="fade-in">
                   <WorkPreview project={project} />
                 </li>
               ))}

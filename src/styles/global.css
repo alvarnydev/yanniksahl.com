@@ -245,6 +245,16 @@ h5 {
   gap: 12rem;
 }
 
+.fade {
+  transition: opacity 0.7s ease-in;
+}
+.fade-in {
+  opacity: 1;
+}
+.fade-out {
+  opacity: 0;
+}
+
 @media (min-width: 50em) {
   .lg\:gap-2 {
     gap: 0.5rem;

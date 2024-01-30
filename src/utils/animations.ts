@@ -9,7 +9,7 @@ const oldAnim = {
 };
 const newAnim = {
   name: "astroFadeIn",
-  duration: 500,
+  duration: 700,
   easing: "cubic-bezier(0.76, 0, 0.24, 1)",
   fillMode: "both",
 };
