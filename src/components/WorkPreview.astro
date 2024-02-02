@@ -4,10 +4,7 @@ import Icon from "./Icon.astro";
 import type { iconPaths } from "./IconPaths";
 
 interface Props {
-  project:
-    | CollectionEntry<"software">
-    | CollectionEntry<"music">
-    | CollectionEntry<"design">;
+  project: CollectionEntry<"work">;
 }
 
 const { data, slug } = Astro.props.project;
