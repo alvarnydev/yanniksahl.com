@@ -10,7 +10,7 @@ const textLinks: { label: string; href: string }[] = [
   { label: "About", href: "/about/" },
 ];
 
-/** Icon links to social media — edit these with links to your profiles! */
+/** Icon links to social media */
 const iconLinks: {
   label: string;
   href: string;
@@ -49,7 +49,12 @@ const iconLinks: {
       <template>
         <button class="menu-button" aria-expanded="false">
           <span class="sr-only">Menu</span>
-          <Icon icon="list" />
+          <span class="icon open">
+            <Icon icon="list" />
+          </span>
+          <span class="icon close">
+            <Icon icon="close" />
+          </span>
         </button>
       </template>
     </menu-button>
@@ -200,15 +205,24 @@ const iconLinks: {
   }
 
   .menu-button {
+    will-change: transform;
     position: relative;
     display: flex;
     border: 0;
     border-radius: 999rem;
     padding: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     font-size: 1.5rem;
     color: var(--gray-300);
     background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
     box-shadow: var(--shadow-md);
+    transition: all 0.4s ease-out;
+    border: 2px solid var(--gray-300);
+  }
+  .menu-button:hover {
+    transform: scale(1.1, 1.1);
+    color: var(--gray-0);
     transition: all var(--theme-transition);
   }
 
@@ -216,6 +230,22 @@ const iconLinks: {
     color: var(--gray-0);
     background: linear-gradient(180deg, var(--gray-600), transparent),
       radial-gradient(var(--gray-900), var(--gray-800) 150%);
+  }
+
+  .menu-button .icon {
+    transition: opacity var(--theme-transition);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .menu-button[aria-expanded="true"] .icon.open,
+  .menu-button[aria-expanded="false"] .icon.close {
+    opacity: 0;
+  }
+  .menu-button[aria-expanded="false"] .icon.open,
+  .menu-button[aria-expanded="true"] .icon.close {
+    opacity: 1;
   }
 
   .menu-header:has(.menu-button[aria-expanded="true"]) {
