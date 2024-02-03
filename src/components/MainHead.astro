@@ -80,7 +80,7 @@ const {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           if (entry.target instanceof HTMLElement) {
-            entry.target.classList.replace("fade-out", "fade-in");
+            entry.target.classList.add("fade-in");
           }
         }
       });
@@ -92,13 +92,12 @@ const {
     );
 
     // Take every element that's displayed in <main>'s parent and fade it (except for special cases)
-    const mainEl = document.querySelector("main");
-    const fadeEls = mainEl?.parentElement?.querySelectorAll("*");
+    const fadeEls = document.querySelectorAll(".fade");
     fadeEls?.forEach((el) => {
       if (el instanceof HTMLElement) {
         if (el.classList.contains("detail")) return;
         if (el.classList.contains("summary")) return;
-        el.classList.add("fade-out", "fade");
+        el.classList.add("fade-out");
         observer.observe(el);
       }
     });

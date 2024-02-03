@@ -37,7 +37,7 @@ const works = (await getCollection("work")).sort(
         (
           <Grid variant="offset" lenItems={works.length}>
             {works.map((project) => (
-              <li class="fade-in">
+              <li class="fade">
                 <WorkPreview project={project} />
               </li>
             ))}

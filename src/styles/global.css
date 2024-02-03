@@ -79,6 +79,7 @@
 
   /* Transitions */
   --theme-transition: 0.2s ease-in-out;
+  --theme-transition-fade: 0.7s ease-in-out;
 }
 
 :root.theme-dark {
@@ -246,13 +247,11 @@ h5 {
 }
 
 .fade {
-  transition: opacity 0.7s ease-in;
+  transition: opacity var(--theme-transition-fade);
+  opacity: 0;
 }
 .fade-in {
   opacity: 1;
-}
-.fade-out {
-  opacity: 0;
 }
 
 @media (min-width: 50em) {
