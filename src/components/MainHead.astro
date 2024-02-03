@@ -80,7 +80,17 @@ const {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           if (entry.target instanceof HTMLElement) {
-            entry.target.classList.add("fade-in");
+            const classes = entry.target.classList;
+            classes.add("animate");
+
+            if (classes.contains("animate-children")) {
+              const children = entry.target.querySelectorAll("li");
+              children.forEach((child, index) => {
+                child.style.opacity = "0";
+                child.classList.add("animate", "animate-fade");
+                child.style.animationDelay = `${(1 + index) * 0.1}s`;
+              });
+            }
           }
         }
       });
@@ -91,15 +101,9 @@ const {
       observerOptions,
     );
 
-    // Take every element that's displayed in <main>'s parent and fade it (except for special cases)
-    const fadeEls = document.querySelectorAll(".fade");
-    fadeEls?.forEach((el) => {
-      if (el instanceof HTMLElement) {
-        if (el.classList.contains("detail")) return;
-        if (el.classList.contains("summary")) return;
-        el.classList.add("fade-out");
-        observer.observe(el);
-      }
+    const animateEls = document.querySelectorAll("[class*=animate-]");
+    animateEls?.forEach((el) => {
+      observer.observe(el);
     });
 
     document.addEventListener("astro:before-preparation", () => {

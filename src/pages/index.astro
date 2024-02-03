@@ -34,7 +34,7 @@ const projects = (await getCollection("work"))
           tagline="I'm a full-stack developer with an eye for design and a love for music, currently based in Frankfurt. "
           align="start"
         >
-          <div class="fade roles">
+          <div class="animate-fade roles">
             <Pill><Icon icon="design" size="1.33em" /> Designer</Pill>
             <Pill><Icon icon="software" size="1.33em" /> Developer</Pill>
             <Pill><Icon icon="music" size="1.33em" /> Musician</Pill>
@@ -53,7 +53,7 @@ const projects = (await getCollection("work"))
     </div>
 
     <main class="wrapper stack gap-20 lg:gap-48">
-      <section class="section fadeIn with-background with-cta">
+      <section class="section with-background with-cta">
         <header class="section-header stack gap-2 lg:gap-4">
           <h3>Selected Work</h3>
           <p>Take a look below at some of my work from the past few years.</p>
@@ -63,7 +63,7 @@ const projects = (await getCollection("work"))
           <Grid variant="offset" lenItems={projects.length}>
             {
               projects.map((project) => (
-                <li class="fade">
+                <li class="animate-fade">
                   <WorkPreview project={project} />
                 </li>
               ))
