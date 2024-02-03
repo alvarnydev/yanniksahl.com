@@ -136,6 +136,7 @@ html,
 body {
   height: 100%;
   overflow-x: hidden;
+  transition: all var(--theme-transition);
 }
 
 body {

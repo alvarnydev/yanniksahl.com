@@ -195,6 +195,10 @@ const iconLinks: {
     transition: all var(--theme-transition);
   }
 
+  .menu-header:has(.menu-button[aria-expanded="true"]) {
+    background-color: var(--gray-999);
+  }
+
   .site-title {
     display: flex;
     gap: 0.5rem;
@@ -250,10 +254,6 @@ const iconLinks: {
     opacity: 1;
   }
 
-  .menu-header:has(.menu-button[aria-expanded="true"]) {
-    background-color: var(--gray-999);
-  }
-
   .menu-button[hidden] {
     display: none;
   }
@@ -285,6 +285,7 @@ const iconLinks: {
     padding: 0rem 2rem 2rem 4rem;
     background-color: var(--gray-999);
     border-bottom: 1px solid var(--gray-800);
+    transition: all var(--theme-transition);
   }
 
   .link {
@@ -311,6 +312,7 @@ const iconLinks: {
     background-color: var(--gray-999);
     border-radius: 0 0 0.75rem 0.75rem;
     box-shadow: var(--shadow-lg);
+    transition: all var(--theme-transition);
   }
 
   .socials {
