@@ -220,10 +220,12 @@ const iconLinks: {
     transition: all 0.4s ease-out;
     border: 2px solid var(--gray-300);
   }
-  .menu-button:hover {
-    transform: scale(1.1, 1.1);
-    color: var(--gray-0);
-    transition: all var(--theme-transition);
+  @media (hover: hover) {
+    .menu-button:hover {
+      transform: scale(1.1, 1.1);
+      color: var(--gray-0);
+      transition: all var(--theme-transition);
+    }
   }
 
   .menu-button[aria-expanded="true"] {
