@@ -86,7 +86,6 @@ const {
             if (classes.contains("animate-children")) {
               const children = entry.target.querySelectorAll("li");
               children.forEach((child, index) => {
-                child.style.opacity = "0";
                 child.classList.add("animate", "animate-fade");
                 child.style.animationDelay = `${(1 + index) * 0.1}s`;
               });
