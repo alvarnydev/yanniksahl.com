@@ -1,5 +1,6 @@
 ---
 title: RekordStore
+status: 🏗️
 scope:
   - Design
   - Software
