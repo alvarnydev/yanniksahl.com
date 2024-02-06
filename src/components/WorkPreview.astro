@@ -12,7 +12,7 @@ const { data, slug } = Astro.props.project;
 
 <a class="card" href={`/work/${slug}`}>
   <span class="title">{data.title}</span>
-  <div class="scopes flex gap-2">
+  <!-- <div class="scopes flex gap-2">
     {
       data.scope.map((item) => (
         <div class="scope">
@@ -20,7 +20,7 @@ const { data, slug } = Astro.props.project;
         </div>
       ))
     }
-  </div>
+  </div> -->
   {
     data.status && (
       <div class="status flex gap-4 justify-center">
