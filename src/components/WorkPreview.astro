@@ -51,12 +51,13 @@ const { data, slug } = Astro.props.project;
     font-family: var(--font-brand);
     font-size: var(--text-md);
     font-weight: 400;
-    transition: box-shadow var(--theme-transition);
+    transition: all var(--theme-transition);
     direction: ltr;
   }
 
   .card:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-accent);
+    transform: scale(1.05, 1.05);
   }
 
   .title {

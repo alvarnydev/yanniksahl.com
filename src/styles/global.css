@@ -59,6 +59,8 @@
   --shadow-lg: 0px 62px 25px rgba(9, 11, 17, 0.01),
     0px 35px 21px rgba(9, 11, 17, 0.05), 0px 16px 16px rgba(9, 11, 17, 0.1),
     0px 4px 9px rgba(9, 11, 17, 0.12);
+  --shadow-accent: 0px 62px 25px #c561f610, 0px 20px 21px #c561f650,
+    0px 16px 16px #c561f610, 0px 4px 9px #c561f612;
 
   /* Text Sizes */
   --text-sm: 0.875rem;
