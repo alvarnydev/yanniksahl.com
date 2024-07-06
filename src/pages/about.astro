@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import ContactCTA from "../components/ContactCTA.astro";
-import Hero from "../components/Hero.astro";
-import animation from "@/utils/animations";
 import DegreeCard from "@/components/about/DegreeCard.astro";
-import type { Degree, Experience, Skill } from "@/types";
 import ExperienceEntry from "@/components/about/ExperienceEntry.astro";
 import SkillCard from "@/components/about/SkillCard.astro";
+import type { Degree, Experience, Skill } from "@/types";
+import animation from "@/utils/animations";
+import ContactCTA from "../components/ContactCTA.astro";
+import Hero from "../components/Hero.astro";
 
 const degrees: Degree[] = [
   {
@@ -251,6 +251,10 @@ skills.forEach((skill) => {
 <BaseLayout title="About | Yannik Sahl" description="About Yannik Sahl">
   <div transition:animate={animation} class="stack gap-12">
     <main class="wrapper about">
+      <Hero
+        title="About"
+        tagline="Thanks for stopping by! Read below to learn more about myself and my background."
+      />
       <section class="animate-fade">
         <h2 class="section-title">Background</h2>
         <div class="content">
