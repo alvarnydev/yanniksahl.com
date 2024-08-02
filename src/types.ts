@@ -1,4 +1,3 @@
-import type { StringMappingType } from "typescript";
 import type { iconPaths } from "./components/IconPaths";
 
 export type WorkScope = "design" | "software" | "music";
@@ -9,7 +8,7 @@ export interface Degree {
   when: string;
   where: string;
   special: string;
-  grade: string;
+  grade?: string;
 }
 
 export interface Experience {

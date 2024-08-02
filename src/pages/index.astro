@@ -15,9 +15,8 @@ import Pill from "../components/Pill.astro";
 import animation from "@/utils/animations";
 
 // Page section components
-import ContactCTA from "../components/ContactCTA.astro";
-import Skills from "../components/Skills.astro";
 import WorkPreview from "@/components/WorkPreview.astro";
+import Skills from "../components/Skills.astro";
 
 // Content Fetching: List three most recent work projects
 const projects = (await getCollection("work"))
@@ -118,7 +117,7 @@ const projects = (await getCollection("work"))
 			</section> -->
     </main>
 
-    <ContactCTA />
+    <!-- <ContactCTA /> -->
   </div>
 </BaseLayout>
 

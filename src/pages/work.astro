@@ -3,11 +3,9 @@ import { getCollection } from "astro:content";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import ContactCTA from "../components/ContactCTA.astro";
-import Hero from "../components/Hero.astro";
-import Grid from "../components/Grid.astro";
 import animation from "@/utils/animations";
-import WorkNav from "@/components/WorkNav.astro";
+import Grid from "../components/Grid.astro";
+import Hero from "../components/Hero.astro";
 import WorkPreview from "../components/WorkPreview.astro";
 
 const works = (await getCollection("work")).sort(
@@ -45,7 +43,7 @@ const works = (await getCollection("work")).sort(
         )
       }
     </main>
-    <ContactCTA />
+    <!-- <ContactCTA /> -->
   </div>
 </BaseLayout>
 

@@ -8,7 +8,7 @@ img: /assets/natours.webp
 img_alt: A mostly green/white website that invites you to take tours into nature
 link: https://natours.yanniksahl.com
 description: |
-  I created this website to practice the basics of frontend design. It was created using HTML5 and CSS3 and is fully responsive, and was designed for a fictional company offering tours in nature.
+  This website features a design for a fictional company that offers tours into Nature.
 tags:
   - Frontend
   - HTML5

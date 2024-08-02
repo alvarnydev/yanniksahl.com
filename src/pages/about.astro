@@ -6,7 +6,6 @@ import ExperienceEntry from "@/components/about/ExperienceEntry.astro";
 import SkillCard from "@/components/about/SkillCard.astro";
 import type { Degree, Experience, Skill } from "@/types";
 import animation from "@/utils/animations";
-import ContactCTA from "../components/ContactCTA.astro";
 import Hero from "../components/Hero.astro";
 
 const degrees: Degree[] = [
@@ -14,19 +13,18 @@ const degrees: Degree[] = [
     title: "B.Sc. Computer Engineering",
     image: "/assets/computer.webp",
     when: "2018 to 2020",
-    where: "Studied for 4 semesters at HTW Berlin",
+    where: "Studied at HTW Berlin",
     special:
-      "Specialization in advanced programming, embedded systems and IT security",
-    grade: "Graduated with a final grade of 1.5",
+      "Specialization in: Advanced Programming, Embedded Systems and IT Security",
+    // grade: "Graduated with a final grade of 1.5",
   },
   {
     title: "B.Sc. Business Administration",
     image: "/assets/business.webp",
     when: "2015 to 2018",
-    where: "Studied for 5 semesters at FU Berlin",
-    special:
-      "Specialization in finance, management accounting and design informatics",
-    grade: "Graduated with a final grade of 2.0",
+    where: "Studied at FU Berlin",
+    special: "Specialization in: Finance, Accounting and Business Informatics",
+    // grade: "Graduated with a final grade of 2.0",
   },
 ];
 
@@ -329,7 +327,7 @@ skills.forEach((skill) => {
         </div>
       </section>
     </main>
-    <ContactCTA />
+    <!-- <ContactCTA /> -->
   </div>
 
   <style>

@@ -26,7 +26,7 @@ const { degree } = Astro.props;
         <li class="pb-2">
           {degree.special}
         </li>
-        <li>{degree.grade}</li>
+        {degree.grade && <li>{degree.grade}</li>}
       </ul>
     </div>
     <div
