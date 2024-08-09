@@ -29,20 +29,21 @@ const degrees: Degree[] = [
 ];
 
 const experiences: Experience[] = [
-  // {
-  //   role: "Web Developer",
-  //   when: "from Feburary 2024",
-  //   where: "Frankfurt",
-  //   company: "byte5 GmbH",
-  //   description: "From February onwards I am happy to start working at byte5 where we develope websites for our clients using mainly React and TypeScript (and sprinkles of Vue).",
-  // },
+  {
+    role: "Emergency Medical Technician & Web Developer",
+    when: "Now",
+    where: "Frankfurt",
+    company: "",
+    description:
+      "I currently work part-time as an EMT in Berlin's rescue service and work on the side as a web developer.",
+  },
   {
     role: "Web Developer",
-    when: "October 2023 to January 2024",
+    when: "October 2023 to June 2024",
     where: "Darmstadt",
     company: "TU Darmstadt",
     description:
-      "During my brief period of studying a Masters program in IT-Security at TU Darmstadt, I worked with the university's IT-Security department to refine the management platform CisOS using mainly Python/Django and base HTML & CSS.",
+      "Honing my web development skills I worked for various clients with very different situations and ideas, making sure to capture their needs as best as possible in the implementation.",
   },
   {
     role: "Emergency Medical Technician",
@@ -50,7 +51,7 @@ const experiences: Experience[] = [
     where: "Berlin",
     company: "DRK e.V.",
     description:
-      "The rescue service had me curious for a while now so I decided to undergo training to become an EMT. I completed the school training at NAW Berlin, the practical training at Johanniter e.V. and briefly worked for the DRK e.V. after completing it.",
+      "I underwent training for the EMT role and worked in the ambulance and resuce service.",
   },
   {
     role: "Tutor",
@@ -58,7 +59,7 @@ const experiences: Experience[] = [
     where: "Berlin",
     company: "Intellego GmbH",
     description:
-      "I noticed that I really grew a liking for working with people after having travelled for a while and working jobs here and there. So when I returned I got me a tutor job, went to schools and helped students from grade 4 to 12 with their school work.",
+      "Quite a change in career for me I started a tutor job, went to schools and helped students with their school work.",
   },
   {
     role: "Repair Technician",
@@ -66,15 +67,15 @@ const experiences: Experience[] = [
     where: "Berlin",
     company: "self-employed",
     description:
-      "After finishing my studies near the end of 2021, I decided to take a break from IT and try to make use of my electrical engineering skills. I repaired broken devices (mostly consoles and smartphones) and in doing so learned lots about hardware at the chip level and how to solder them.",
+      "Making use of my electrical engineering skills, I bought and repaired broken devices (mostly consoles and smartphones). In doing so I learned lots about soldering and hardware at the chip level.",
   },
   {
-    role: "System Administration & Support",
+    role: "System Administration & Technical Support",
     when: "April 2019 to January 2020",
     where: "Berlin",
     company: "HTW Berlin",
     description:
-      "During my time at HTW Berlin I took on a student assistant job and administrated VMs for student projects, wrote technical documentation and helped set up CI/CD pipelines.",
+      "Administrated VMs for student projects, wrote technical documentation and helped set up CI/CD pipelines.",
   },
   {
     role: "Software Development",
@@ -82,7 +83,7 @@ const experiences: Experience[] = [
     where: "Berlin",
     company: "prudsys AG",
     description:
-      "For my first 'real' delevoper job they had me program an A/B testing tool in Java to figure out if prudsys' product (which was prize optimization for their client's online shops) was performing better than traditional pricing.",
+      "I created an A/B testing tool in Java to figure out if the company's product, prize optimization client's online shops, was performing better than traditional pricing.",
   },
 ];
 
@@ -96,28 +97,28 @@ const skills: Skill[] = [
         icon: "javascript",
         link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
         color: "#F0DB4F",
-        xp: 95,
+        xp: 100,
       },
       {
         name: "HTML",
         icon: "html",
         link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
         color: "#E5532D",
-        xp: 90,
+        xp: 95,
       },
       {
         name: "CSS",
         icon: "css",
         link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
         color: "#39ACDD",
-        xp: 85,
+        xp: 90,
       },
       {
         name: "TypeScript",
         icon: "typescript",
         link: "https://www.typescriptlang.org/",
         color: "#3178C6",
-        xp: 80,
+        xp: 90,
       },
       {
         name: "C#",
@@ -152,22 +153,30 @@ const skills: Skill[] = [
         icon: "react",
         link: "https://react.dev/",
         color: "#149ECA",
-        xp: 90,
+        xp: 95,
       },
       {
         name: "Astro",
         icon: "astro",
         link: "https://astro.build/",
         color: "#761DE9",
-        xp: 50,
+        xp: 90,
       },
       {
         name: "Next.js",
         icon: "nextjs",
         link: "https://nextjs.org/",
         color: "#000",
-        xp: 60,
+        xp: 80,
       },
+      {
+        name: "Three.js",
+        icon: "nextjs",
+        link: "https://threejs.org/",
+        color: "#761DE9",
+        xp: 80,
+      },
+
       {
         name: "ASP.NET",
         icon: "aspnet",
@@ -214,7 +223,7 @@ const skills: Skill[] = [
         icon: "tailwind",
         link: "https://tailwindcss.com/",
         color: "#38BDF8",
-        xp: 95,
+        xp: 100,
       },
       {
         name: "Git",
@@ -235,7 +244,7 @@ const skills: Skill[] = [
         icon: "wordpress",
         link: "https://wordpress.org/",
         color: "#ffffff",
-        xp: 50,
+        xp: 90,
       },
     ],
   },
@@ -302,9 +311,7 @@ skills.forEach((skill) => {
         <h2 class="section-title">Experience</h2>
         <div class="content">
           <p class="mb-6 md:mb-8">
-            Here you can read about my career journey so far. While I've worked
-            mostly in the IT field, I've been absent from my computer from 2021
-            to 2023 working very different jobs and/or travelling.
+            Here you can read about my career journey so far:
           </p>
           <ol
             class="animate-fade animate-children relative border-s border-[1px] border-l-2 px-4 py-8 rounded-3xl border-[var(--gray-600)] bg-[var(--gray-900)] w-[95%] mx-auto"
