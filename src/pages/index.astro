@@ -16,7 +16,6 @@ import animation from "@/utils/animations";
 
 // Page section components
 import WorkPreview from "@/components/WorkPreview.astro";
-import Skills from "../components/Skills.astro";
 
 // Content Fetching: List three most recent work projects
 const projects = (await getCollection("work"))
@@ -64,7 +63,7 @@ const projects = (await getCollection("work"))
         />
       </header>
 
-      <Skills />
+      <!-- <Skills /> -->
     </div>
 
     <main class="wrapper stack gap-20 lg:gap-48 mb-48">

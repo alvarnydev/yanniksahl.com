@@ -1,6 +1,8 @@
 import type { iconPaths } from "./components/IconPaths";
-
-export type WorkScope = "design" | "software" | "music";
+export const WorkScopes = ["design", "app", "experience"] as const;
+export type WorkScope = (typeof WorkScopes)[number];
+export const isWorkScope = (scope: string): scope is WorkScope =>
+  WorkScopes.includes(scope as WorkScope);
 
 export interface Degree {
   title: string;

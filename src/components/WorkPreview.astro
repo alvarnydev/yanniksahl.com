@@ -1,26 +1,29 @@
 ---
+import { isWorkScope } from "@/types";
 import type { CollectionEntry } from "astro:content";
 import Icon from "./Icon.astro";
-import type { iconPaths } from "./IconPaths";
+import { ScopeIconMap } from "./WorkNav.astro";
 
 interface Props {
   project: CollectionEntry<"work">;
 }
 
 const { data, slug } = Astro.props.project;
+const scope = data.scope?.toLowerCase();
+const scopeIcon = scope && isWorkScope(scope) ? ScopeIconMap[scope] : null;
 ---
 
 <a class="card" href={`/work/${slug}`}>
   <span class="title">{data.title}</span>
-  <!-- <div class="scopes flex gap-2">
-    {
-      data.scope.map((item) => (
+  {
+    scopeIcon && (
+      <div class="scopes flex gap-2">
         <div class="scope">
-          <Icon icon={item.toLowerCase() as keyof typeof iconPaths} />
+          <Icon icon={scopeIcon} />
         </div>
-      ))
-    }
-  </div> -->
+      </div>
+    )
+  }
   {
     data.status && (
       <div class="status flex gap-4 justify-center">
@@ -62,6 +65,7 @@ const { data, slug } = Astro.props.project;
 
   .title {
     grid-area: 1 / 1 / 2 / 2;
+    /* border: 1px solid var(--gray-0); */
     z-index: 1;
     margin: 0.75rem 1rem;
     padding: 0.5rem 1rem;
@@ -87,9 +91,10 @@ const { data, slug } = Astro.props.project;
     margin: 0.75rem 1rem;
   }
   .scope {
-    background: var(--gray-999);
+    background: white;
+    /* border: 1px solid white; */
     padding: 0.5rem;
-    color: var(--gray-0);
+    color: var(--accent-regular);
     border-radius: 999px;
   }
 

@@ -1,8 +1,6 @@
 ---
 title: Natours
-scope:
-  - Design
-  - Software
+scope: Design
 publishDate: 2021-03-02 00:00:00
 img: /assets/natours.webp
 img_alt: A mostly green/white website that invites you to take tours into nature

@@ -21,7 +21,7 @@ const projects = (await getCollection("work")).sort(
     id="work"
     transition:animate={animation}
     class="stack gap-20"
-    data-scope="software"
+    data-scope=""
   >
     <main class="wrapper stack gap-12 md:gap-8 mb-40">
       <Hero
@@ -29,13 +29,13 @@ const projects = (await getCollection("work")).sort(
         tagline="See my most recent projects below to get an idea of my past experience."
         align="start"
       >
-        <!-- <WorkNav /> -->
+        <!-- <WorkNav /> Fix the grid behavior when we have  more projects where a filter would make sense -->
       </Hero>
       {
         (
           <Grid variant="offset" lenItems={projects.length}>
             {projects.map((project) => (
-              <li class="animate-fade">
+              <li class={`animate-fade ${project.data.scope?.toLowerCase()}`}>
                 <WorkPreview project={project} />
               </li>
             ))}
@@ -47,15 +47,10 @@ const projects = (await getCollection("work")).sort(
   </div>
 </BaseLayout>
 
-<!-- <style>
-  #work .music,
-  #work .software,
-  #work .design {
+<style>
+  #work[data-scope="app"] li:not(.app),
+  #work[data-scope="design"] li:not(.design),
+  #work[data-scope="experience"] li:not(.experience) {
     display: none;
   }
-  #work[data-scope="software"] .software,
-  #work[data-scope="music"] .music,
-  #work[data-scope="design"] .design {
-    display: block;
-  }
-</style> -->
+</style>

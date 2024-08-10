@@ -1,26 +1,25 @@
 ---
-import type { WorkScope } from "@/types";
+import { WorkScopes, type WorkScope } from "@/types";
 import type { iconPaths } from "./IconPaths";
 import Icon from "./Icon.astro";
 import Pill from "./Pill.astro";
 
-const sections: {
-  scope: WorkScope;
-  icon: keyof typeof iconPaths;
-}[] = [
-  { scope: "design", icon: "design" },
-  { scope: "software", icon: "software" },
-  { scope: "music", icon: "music" },
-];
+export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
+  design: "brush",
+  app: "code",
+  experience: "cube",
+};
 ---
 
-<work-nav>
+<work-nav class="flex items-center gap-4 text-2xl">
+  <p>Filter:</p>
   <div class="flex gap-2 pt-2 flex-wrap justify-center md:justify-start">
     {
-      sections.map(({ scope, icon }) => (
+      WorkScopes.map((scope) => (
         <button data-scope={scope}>
           <Pill>
-            <Icon icon={icon} size="1.33em" /> {scope}
+            <Icon icon={ScopeIconMap[scope]} size="1.33em" />{" "}
+            {scope.charAt(0).toUpperCase() + scope.slice(1)}
           </Pill>
         </button>
       ))
@@ -29,8 +28,7 @@ const sections: {
 </work-nav>
 
 <script>
-  import type { WorkScope } from "@/types";
-  const scopes = ["design", "music", "software"];
+  import { isWorkScope, type WorkScope } from "@/types";
 
   document.addEventListener("astro:page-load", () => {
     class WorkNav extends HTMLElement {
@@ -40,35 +38,40 @@ const sections: {
         const work = document.querySelector("#work")!;
         const buttons = this.querySelectorAll("button")!;
 
-        // Scope setter function
-        const setScope = (scope: WorkScope) => {
+        const setScope = (scope: WorkScope | null) => {
           // Set button and Pill style
           [...buttons].map((button) => {
+            // Reset button and pill styles
             button.classList.remove("active");
             button.querySelector("div")?.classList.add("inactive");
 
             const buttonScope = button.getAttribute("data-scope");
-            if (buttonScope == scope) {
-              button.classList.add("active");
-              button.querySelector("div")?.classList.remove("inactive");
+            const currentWorkScope = work.getAttribute("data-scope");
+
+            // If the button we clicked has the desired scope, set styles
+            if (scope && buttonScope == scope) {
+              // Check if already active
+              if (currentWorkScope == scope) {
+                button.classList.remove("active");
+                button.querySelector("div")?.classList.add("inactive");
+                work.setAttribute("data-scope", "");
+              }
+              // Else set to active
+              else {
+                button.classList.add("active");
+                button.querySelector("div")?.classList.remove("inactive");
+                work.setAttribute("data-scope", scope);
+              }
             }
           });
-
-          work.setAttribute("data-scope", scope);
-        };
-
-        const isWorkScope = (scope: string | null): boolean => {
-          if (!scope) return false;
-          if (!scopes.includes(scope)) return false;
-          return true;
         };
 
         // Set the scope on button click
         [...buttons].map((button) => {
           button.addEventListener("click", () => {
             const buttonScope = button.getAttribute("data-scope");
-            if (isWorkScope(buttonScope)) {
-              setScope(buttonScope as WorkScope);
+            if (buttonScope && isWorkScope(buttonScope)) {
+              setScope(buttonScope);
             }
           });
         });
@@ -78,8 +81,8 @@ const sections: {
           .querySelector("#work")
           ?.getAttribute("data-scope");
         if (existingScope && isWorkScope(existingScope))
-          setScope(existingScope as WorkScope);
-        else setScope("design");
+          setScope(existingScope);
+        else setScope(null);
       }
     }
     if (customElements.get("work-nav") === undefined) {
@@ -90,8 +93,6 @@ const sections: {
 
 <style>
   .active {
-    pointer-events: none;
-    cursor: default;
     color: var(--gray-0);
   }
 </style>
