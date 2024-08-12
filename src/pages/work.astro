@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 
+import WorkNav from "@/components/WorkNav.astro";
 import animation from "@/utils/animations";
 import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
@@ -29,7 +30,7 @@ const projects = (await getCollection("work")).sort(
         tagline="See my most recent projects below to get an idea of my past experience."
         align="start"
       >
-        <!-- <WorkNav /> Fix the grid behavior when we have  more projects where a filter would make sense -->
+        <WorkNav />
       </Hero>
       {
         (
@@ -43,7 +44,6 @@ const projects = (await getCollection("work")).sort(
         )
       }
     </main>
-    <!-- <ContactCTA /> -->
   </div>
 </BaseLayout>
 
