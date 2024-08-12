@@ -78,7 +78,7 @@ const projects = (await getCollection("work"))
             {
               projects.map((project) => (
                 <li class="animate-fade">
-                  <WorkPreview project={project} />
+                  <WorkPreview project={project} displayIcon={false} />
                 </li>
               ))
             }

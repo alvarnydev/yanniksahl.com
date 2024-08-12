@@ -6,9 +6,14 @@ import { ScopeIconMap } from "./WorkNav.astro";
 
 interface Props {
   project: CollectionEntry<"work">;
+  displayIcon?: boolean;
 }
 
-const { data, slug } = Astro.props.project;
+const {
+  project: { data, slug },
+  displayIcon = true,
+} = Astro.props;
+
 const scope = data.scope?.toLowerCase();
 const scopeIcon = scope && isWorkScope(scope) ? ScopeIconMap[scope] : null;
 ---
@@ -16,7 +21,7 @@ const scopeIcon = scope && isWorkScope(scope) ? ScopeIconMap[scope] : null;
 <a class="card" href={`/work/${slug}`}>
   <span class="title">{data.title}</span>
   {
-    scopeIcon && (
+    displayIcon && scopeIcon && (
       <div class="scopes flex gap-2">
         <div class="scope">
           <Icon icon={scopeIcon} />
@@ -91,10 +96,10 @@ const scopeIcon = scope && isWorkScope(scope) ? ScopeIconMap[scope] : null;
     margin: 0.75rem 1rem;
   }
   .scope {
-    background: white;
-    /* border: 1px solid white; */
+    background: hsla(var(--gray-999-basis), 0.6);
+    backdrop-filter: blur(4px);
     padding: 0.5rem;
-    color: var(--accent-regular);
+    color: var(--gray-100);
     border-radius: 999px;
   }
 
