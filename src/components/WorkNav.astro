@@ -28,6 +28,7 @@ export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
 </work-nav>
 
 <script>
+  import { updateGridElements } from "@/helpers/update-grid-elements";
   import { isWorkScope, type WorkScope } from "@/types";
 
   document.addEventListener("astro:page-load", () => {
@@ -38,40 +39,7 @@ export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
         super();
 
         const work = document.querySelector("#work")!;
-        const workGrid = document.querySelector("#work-grid")!;
         const buttons = this.querySelectorAll("button")!;
-
-        // Update grid elements: visibility and offset
-        const updateGridElements = () => {
-          const gridElements = workGrid.querySelectorAll("li");
-
-          // Hide all
-          gridElements.forEach((element) => {
-            element.classList.add("hidden");
-          });
-
-          // Update visibility
-          gridElements.forEach((element) => {
-            element.classList.remove("hidden");
-            const style = getComputedStyle(element);
-            if (style.display === "none") {
-              element.classList.remove("visible");
-            } else {
-              element.classList.add("visible");
-            }
-          });
-
-          // Update offset
-          const visibleElements = workGrid.querySelectorAll("li.visible");
-          visibleElements.forEach((element, index) => {
-            if (index % 2 === 1) {
-              element.classList.add("offset");
-            } else {
-              element.classList.remove("offset");
-            }
-          });
-        };
-        updateGridElements();
 
         const setScope = (scope: WorkScope | null) => {
           // Set button and Pill style
