@@ -30,17 +30,9 @@ export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
 <script>
   import { isWorkScope, type WorkScope } from "@/types";
 
-  // Initial offsets
-  document.addEventListener("DOMContentLoaded", () => {
-    const elements = document.querySelectorAll("#work-grid > li");
-    elements.forEach((element, index) => {
-      if (index % 2 === 1) {
-        element.classList.add("offset");
-      }
-    });
-  });
-
   document.addEventListener("astro:page-load", () => {
+    // Initial offsets
+
     class WorkNav extends HTMLElement {
       constructor() {
         super();
@@ -50,7 +42,7 @@ export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
         const buttons = this.querySelectorAll("button")!;
 
         // Update grid elements: visibility and offset
-        function updateGridElements() {
+        const updateGridElements = () => {
           const gridElements = workGrid.querySelectorAll("li");
 
           // Hide all
@@ -62,7 +54,6 @@ export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
           gridElements.forEach((element) => {
             element.classList.remove("hidden");
             const style = getComputedStyle(element);
-            console.log("display", style.display);
             if (style.display === "none") {
               element.classList.remove("visible");
             } else {
@@ -79,7 +70,8 @@ export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
               element.classList.remove("offset");
             }
           });
-        }
+        };
+        updateGridElements();
 
         const setScope = (scope: WorkScope | null) => {
           // Set button and Pill style
