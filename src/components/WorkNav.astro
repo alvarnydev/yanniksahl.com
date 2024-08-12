@@ -11,9 +11,9 @@ export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
 };
 ---
 
-<work-nav class="flex items-center gap-4 text-2xl">
-  <p>Filter:</p>
-  <div class="flex gap-2 pt-2 flex-wrap justify-center md:justify-start">
+<work-nav class="flex pt-4 md:pt-0 items-start sm:items-center gap-4 text-2xl">
+  <p contenteditable="text-lg md:text-xl">Filter by:</p>
+  <div class="flex gap-2 flex-wrap">
     {
       WorkScopes.map((scope) => (
         <button data-scope={scope}>
@@ -30,13 +30,56 @@ export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
 <script>
   import { isWorkScope, type WorkScope } from "@/types";
 
+  // Initial offsets
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll("#work-grid > li");
+    elements.forEach((element, index) => {
+      if (index % 2 === 1) {
+        element.classList.add("offset");
+      }
+    });
+  });
+
   document.addEventListener("astro:page-load", () => {
     class WorkNav extends HTMLElement {
       constructor() {
         super();
 
         const work = document.querySelector("#work")!;
+        const workGrid = document.querySelector("#work-grid")!;
         const buttons = this.querySelectorAll("button")!;
+
+        // Update grid elements: visibility and offset
+        function updateGridElements() {
+          const gridElements = workGrid.querySelectorAll("li");
+
+          // Hide all
+          gridElements.forEach((element) => {
+            element.classList.add("hidden");
+          });
+
+          // Update visibility
+          gridElements.forEach((element) => {
+            element.classList.remove("hidden");
+            const style = getComputedStyle(element);
+            console.log("display", style.display);
+            if (style.display === "none") {
+              element.classList.remove("visible");
+            } else {
+              element.classList.add("visible");
+            }
+          });
+
+          // Update offset
+          const visibleElements = workGrid.querySelectorAll("li.visible");
+          visibleElements.forEach((element, index) => {
+            if (index % 2 === 1) {
+              element.classList.add("offset");
+            } else {
+              element.classList.remove("offset");
+            }
+          });
+        }
 
         const setScope = (scope: WorkScope | null) => {
           // Set button and Pill style
@@ -45,12 +88,13 @@ export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
             button.classList.remove("active");
             button.querySelector("div")?.classList.add("inactive");
 
+            // Get current scope and button scope
             const buttonScope = button.getAttribute("data-scope");
             const currentWorkScope = work.getAttribute("data-scope");
 
             // If the button we clicked has the desired scope, set styles
             if (scope && buttonScope == scope) {
-              // Check if already active
+              // If already active, set to inactive
               if (currentWorkScope == scope) {
                 button.classList.remove("active");
                 button.querySelector("div")?.classList.add("inactive");
@@ -62,6 +106,7 @@ export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
                 button.querySelector("div")?.classList.remove("inactive");
                 work.setAttribute("data-scope", scope);
               }
+              updateGridElements();
             }
           });
         };
