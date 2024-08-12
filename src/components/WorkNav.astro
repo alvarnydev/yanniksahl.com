@@ -1,21 +1,14 @@
 ---
-import { WorkScopes, type WorkScope } from "@/types";
-import type { iconPaths } from "./IconPaths";
+import { ScopeIconMap, WorkScopes, type WorkScope } from "@/types";
 import Icon from "./Icon.astro";
 import Pill from "./Pill.astro";
-
-export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
-  design: "brush",
-  app: "code",
-  experience: "cube",
-};
 ---
 
 <work-nav class="flex pt-4 md:pt-0 items-start sm:items-center gap-4 text-2xl">
   <p contenteditable="text-lg md:text-xl">Filter by:</p>
   <div class="flex gap-2 flex-wrap">
     {
-      WorkScopes.map((scope) => (
+      WorkScopes.filter((filter) => filter !== "experience").map((scope) => (
         <button data-scope={scope}>
           <Pill>
             <Icon icon={ScopeIconMap[scope]} size="1.33em" />{" "}

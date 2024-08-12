@@ -2,14 +2,8 @@ export const updateGridElements = () => {
   const workGrid = document.querySelector("#work-grid")!;
   const gridElements = workGrid.querySelectorAll("li");
 
-  // Hide all
-  gridElements.forEach((element) => {
-    element.classList.add("hidden");
-  });
-
   // Update visibility
   gridElements.forEach((element) => {
-    element.classList.remove("hidden");
     const style = getComputedStyle(element);
     if (style.display === "none") {
       element.classList.remove("visible");

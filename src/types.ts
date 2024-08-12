@@ -4,6 +4,12 @@ export type WorkScope = (typeof WorkScopes)[number];
 export const isWorkScope = (scope: string): scope is WorkScope =>
   WorkScopes.includes(scope as WorkScope);
 
+export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
+  design: "brush",
+  app: "code",
+  experience: "cube",
+};
+
 export interface Degree {
   title: string;
   image: string;
