@@ -55,12 +55,15 @@ const projects = (await getCollection("work"))
           </div>
         </Hero>
 
-        <img
-          alt="Me smiling wearing a dark shirt and a base cap with the letters LA."
-          width="480"
-          height="620"
-          src="/assets/portrait.webp"
-        />
+        <div class="portrait-container">
+          <img
+            alt="Me smiling wearing a dark shirt and a base cap with the letters LA."
+            width="480"
+            height="620"
+            src="/assets/portrait.webp"
+          />
+          <div class="portrait-overlay"></div>
+        </div>
       </header>
 
       <!-- <Skills /> -->
@@ -140,6 +143,25 @@ const projects = (await getCollection("work"))
     box-shadow: var(--shadow-md);
   }
 
+  .hero .portrait-container {
+    position: relative;
+  }
+
+  .hero .portrait-overlay {
+    border-radius: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+      to bottom,
+      hsla(280, 89%, 67%, 0.23),
+      rgba(169, 36, 36, 0)
+    );
+  }
+
   @media (min-width: 50em) {
     .hero {
       display: grid;
@@ -158,6 +180,10 @@ const projects = (await getCollection("work"))
       aspect-ratio: 3 / 4;
       border-radius: 4.5rem;
       object-fit: cover;
+    }
+    .hero .portrait-container,
+    .hero .portrait-overlay {
+      border-radius: 4.5rem;
     }
   }
 
