@@ -8,7 +8,7 @@ link: https://natours.yanniksahl.com
 description: |
   This website features a design for a fictional company that offers tours into Nature.
 tags:
-  - Frontend
+  - Front-End
   - HTML5
   - CSS3
 ---
