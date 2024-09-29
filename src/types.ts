@@ -1,12 +1,12 @@
 import type { iconPaths } from "./components/IconPaths";
-export const WorkScopes = ["design", "app", "experience"] as const;
+export const WorkScopes = ["website", "app", "experience"] as const;
 export type WorkScope = (typeof WorkScopes)[number];
 export const isWorkScope = (scope: string): scope is WorkScope =>
   WorkScopes.includes(scope as WorkScope);
 
 export const ScopeIconMap: Record<WorkScope, keyof typeof iconPaths> = {
-  design: "brush",
-  app: "code",
+  website: "code",
+  app: "rocket",
   experience: "cube",
 };
 
