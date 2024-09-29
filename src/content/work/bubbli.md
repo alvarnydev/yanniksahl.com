@@ -6,7 +6,7 @@ img: /assets/bubbli.webp
 img_alt: A mostly green/white website that invites you to take tours into nature
 link: https://bubbli.yanniksahl.com
 description: |
-  A 3D Landing Page for a fictional E-Commerce company.
+  A 3D e-commerce landing page for a company that sells beverages.
 tags:
   - Front-End
   - React

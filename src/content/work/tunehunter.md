@@ -7,7 +7,7 @@ img: /assets/tunehunter.webp
 img_alt: A web app with a purple theme displaying a searchbar with fields for Arist and Song and a table with suggestions.
 link: https://tunehunter.app
 description: |
-  TuneHunter allows you to to compare different music vendors to get the best deal when buying music online.
+  TuneHunter is an app to compare different music vendors when buying music online.
 tags:
   - Full-Stack
   - React
