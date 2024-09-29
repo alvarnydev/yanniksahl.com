@@ -6,7 +6,7 @@ img: /assets/glisten.webp
 img_alt: A dark landing page with big white text introducing the Glisten company.
 link: https://glistenai.yanniksahl.com
 description: |
-  A modern website for a company that sells AI software as a service.
+  A modern website for a company that sells AI design software as a service.
 tags:
   - Front-End
   - React
