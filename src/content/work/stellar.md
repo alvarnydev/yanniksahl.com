@@ -1,10 +1,10 @@
 ---
-title: Glisten
+title: StellarAI
 scope: Website
 publishDate: 2021-03-02 00:00:00
-img: /assets/glisten.webp
+img: /assets/stellar.webp
 img_alt: A dark landing page with big white text introducing the Glisten company.
-link: https://glistenai.yanniksahl.com
+link: https://stellar.yanniksahl.com
 description: |
   A modern website for a company that sells AI design software as a service.
 tags:
