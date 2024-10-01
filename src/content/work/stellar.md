@@ -1,7 +1,7 @@
 ---
 title: StellarAI
 scope: Website
-publishDate: 2021-03-02 00:00:00
+publishDate: 2024-08-13 00:00:00
 img: /assets/stellar.webp
 img_alt: A dark landing page with big white text introducing the StellarAI company.
 link: https://stellar.yanniksahl.com
