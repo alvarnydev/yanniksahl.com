@@ -5,13 +5,13 @@ import Pill from "./Pill.astro";
 ---
 
 <work-nav
-  class="flex pt-4 md:pt-0 items-start justify-center sm:items-center md:justify-start gap-4 text-2xl"
+  class="flex pt-4 md:pt-0 justify-center items-center md:justify-start gap-2 md:gap-4 text-2xl"
 >
-  <p class="text-xl md:text-2xl">Filter by:</p>
-  <div class="flex gap-2 flex-wrap">
+  <p class="text-lg md:text-2xl">Filter by:</p>
+  <div class="flex md:gap-2 flex-wrap">
     {
       WorkScopes.filter((filter) => filter !== "experience").map((scope) => (
-        <button data-scope={scope}>
+        <button data-scope={scope} class="scale-[85%] md:scale-100">
           <Pill>
             <Icon icon={ScopeIconMap[scope]} size="1.33em" />{" "}
             {scope.charAt(0).toUpperCase() + scope.slice(1)}
