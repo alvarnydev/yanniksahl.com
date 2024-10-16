@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import DegreeCard from "@/components/about/DegreeCard.astro";
 import SkillCard from "@/components/about/SkillCard.astro";
 import type { Degree, Experience, Skill } from "@/types";
 import animation from "@/utils/animations";
@@ -279,7 +278,7 @@ skills.forEach((skill) => {
           </p>
         </div>
       </section>
-      <section class="animate-fade">
+      <!-- <section class="animate-fade">
         <h2 class="section-title">Education</h2>
         <div class="content">
           <p class="mb-6 sm:mb-8">
@@ -291,7 +290,7 @@ skills.forEach((skill) => {
             {degrees.map((degree) => <DegreeCard degree={degree} />)}
           </div>
         </div>
-      </section>
+      </section> -->
       <section class="animate-fade">
         <h2 class="section-title">Skills</h2>
         <div class="content">
