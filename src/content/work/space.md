@@ -1,5 +1,5 @@
 ---
-title: Space
+title: SpaceY
 scope: Website
 publishDate: 2021-04-02 00:00:00
 img: /assets/space.webp
