@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://alvarny.dev/sitemap.xml
+Sitemap: http://yanniksahl.com/sitemap.xml
