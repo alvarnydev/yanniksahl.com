@@ -6,7 +6,7 @@ img: /assets/space.webp
 img_alt: Landing page of a space travel company with links to navigate and a button to further explore.
 link: https://space.yanniksahl.com
 description: |
-  A website show-casing the company's space-tourism offerings.
+  SpaceY is a fictional company that offers space-tourism services. Because who wouldn't want to float through endless nothingness in a tight metal container?
 tags:
   - Front-End
   - HTML5

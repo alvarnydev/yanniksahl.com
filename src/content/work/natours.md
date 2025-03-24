@@ -6,7 +6,7 @@ img: /assets/natours.webp
 img_alt: A mostly green/white website that invites you to take tours into nature
 link: https://natours.yanniksahl.com
 description: |
-  A website made for a company that offers tours into nature.
+  Natours offers tours into nature for everyone with that craving to lose themselves in the great outdoors! Book today (or don't, because it's fictional) to live your best outdoor-life!
 tags:
   - Front-End
   - HTML5

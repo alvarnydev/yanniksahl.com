@@ -6,7 +6,7 @@ img: /assets/stellar.webp
 img_alt: A dark landing page with big white text introducing the StellarAI company.
 link: https://stellar.yanniksahl.com
 description: |
-  A modern, linear-style website for a company that sells AI design software as a service.
+  StellarAI is a fictional SaaS that markets its services with a modern, linear-style website. The site incorporates various design elements such as bento grids and visually-pleasing animations to show you that they paid attention in design class.
 tags:
   - Front-End
   - React

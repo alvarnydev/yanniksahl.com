@@ -6,7 +6,7 @@ img: /assets/bubbli.webp
 img_alt: Soda cans and a company marketing slogan in front of a yellow background.
 link: https://bubbli.yanniksahl.com
 description: |
-  A 3D e-commerce landing page for a company that sells beverages.
+  Bubbli is a fictional beverage with its own marketing page! It displays floating beverage cans in various contexts to showcase the product and its design.
 tags:
   - Front-End
   - React
