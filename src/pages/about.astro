@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
+import DegreeCard from "@/components/about/DegreeCard.astro";
 import SkillCard from "@/components/about/SkillCard.astro";
 import type { Degree, Experience, Skill } from "@/types";
 import animation from "@/utils/animations";
@@ -87,6 +88,33 @@ const experiences: Experience[] = [
 
 const skills: Skill[] = [
   {
+    field: "Tools  ⚙️",
+    description: "Tools that help me create great things.",
+    fieldSkill: [
+      {
+        name: "Figma",
+        icon: "figma",
+        link: "https://astro.build/",
+        color: "#A259FF",
+        xp: 95,
+      },
+      {
+        name: "Webflow",
+        icon: "webflow",
+        link: "https://astro.build/",
+        color: "#1B73F5",
+        xp: 90,
+      },
+      {
+        name: "WordPress",
+        icon: "wordpress",
+        link: "https://wordpress.org/",
+        color: "#08789D",
+        xp: 75,
+      },
+    ],
+  },
+  {
     field: "Languages 👾",
     description: "Template, styling or programming language? They all go here.",
     fieldSkill: [
@@ -118,33 +146,12 @@ const skills: Skill[] = [
         color: "#3178C6",
         xp: 90,
       },
-      {
-        name: "C#",
-        icon: "csharp",
-        link: "https://dotnet.microsoft.com/en-us/languages/csharp",
-        color: "#ac99ea",
-        xp: 75,
-      },
-      {
-        name: "Python",
-        icon: "python",
-        link: "https://www.python.org/",
-        color: "#F7CC42",
-        xp: 30,
-      },
-      {
-        name: "Java",
-        icon: "java",
-        link: "https://www.oracle.com/java/",
-        color: "#F58620",
-        xp: 25,
-      },
     ],
   },
   {
     field: "Frameworks 🏗️",
     description:
-      "The frameworks (and libraries) I've most commonly used over the years.",
+      "The frameworks and libraries I've most commonly used over the years.",
     fieldSkill: [
       {
         name: "React",
@@ -161,60 +168,24 @@ const skills: Skill[] = [
         xp: 90,
       },
       {
-        name: "Next.js",
-        icon: "nextjs",
-        link: "https://nextjs.org/",
-        color: "#000",
-        xp: 80,
-      },
-      {
         name: "Three.js",
         icon: "threejs",
         link: "https://threejs.org/",
         color: "#fff",
         xp: 80,
       },
-
       {
-        name: "ASP.NET",
-        icon: "aspnet",
-        link: "https://dotnet.microsoft.com/en-us/apps/aspnet",
-        color: "#1587C8",
-        xp: 40,
-      },
-      {
-        name: "Express",
-        icon: "express",
-        link: "https://expressjs.com/",
-        color: "#fff",
-        xp: 30,
-      },
-      {
-        name: "Svelte",
-        icon: "svelte",
-        link: "https://svelte.dev/",
-        color: "#F96743",
-        xp: 20,
-      },
-      {
-        name: "Nest.js",
-        icon: "nestjs",
-        link: "https://nestjs.com/",
-        color: "#E12954",
-        xp: 10,
-      },
-      {
-        name: "Django",
-        icon: "django",
-        link: "https://www.djangoproject.com/",
-        color: "#51BE95",
-        xp: 15,
+        name: "Next.js",
+        icon: "nextjs",
+        link: "https://nextjs.org/",
+        color: "#000",
+        xp: 70,
       },
     ],
   },
   {
     field: "Complementary ✨",
-    description: "Technology that complements my programming journey.",
+    description: "Technology that complements my journey.",
     fieldSkill: [
       {
         name: "Tailwind",
@@ -236,13 +207,6 @@ const skills: Skill[] = [
         link: "https://www.docker.com/",
         color: "#1D63ED",
         xp: 60,
-      },
-      {
-        name: "WordPress",
-        icon: "wordpress",
-        link: "https://wordpress.org/",
-        color: "#ffffff",
-        xp: 90,
       },
     ],
   },
@@ -273,26 +237,25 @@ skills.forEach((skill) => {
           <p class="pt-2"></p>
           <p>
             Every day I strive to become a little bit better at designing,
-            programming, engineering and musicmaking. When I have the chance to
-            combine them in a project, that's when I'm most in my element.
+            developing and musicmaking. When I have the chance to combine them
+            in a project, that's when I'm most in my element!
           </p>
         </div>
       </section>
-      <!-- <section class="animate-fade">
+      <section class="animate-fade">
         <h2 class="section-title">Education</h2>
         <div class="content">
           <p class="mb-6 sm:mb-8">
             I've completed two Bachelor programs and underwent training to
-            become an EMT. For more information about my degrees, click the
-            following cards:
+            become an EMT. Click the following cards for more information:
           </p>
           <div class="w-11/12 mx-auto flex gap-8 flex-col lg:flex-row">
             {degrees.map((degree) => <DegreeCard degree={degree} />)}
           </div>
         </div>
-      </section> -->
+      </section>
       <section class="animate-fade">
-        <h2 class="section-title">Skills</h2>
+        <h2 class="section-title">Expertise</h2>
         <div class="content">
           <p class="mb-6 sm:mb-8">
             This is the tech I most often use in my programming, ranked by
@@ -322,7 +285,7 @@ skills.forEach((skill) => {
           </ol>
         </div>
       </section> -->
-      <section class="animate-fade">
+      <!-- <section class="animate-fade">
         <h2 class="section-title">Thank You</h2>
         <div class="content">
           <p class="text-xl">
@@ -330,7 +293,7 @@ skills.forEach((skill) => {
             🙂
           </p>
         </div>
-      </section>
+      </section> -->
     </main>
   </div>
 
