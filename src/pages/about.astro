@@ -88,33 +88,6 @@ const experiences: Experience[] = [
 
 const skills: Skill[] = [
   {
-    field: "Tools  ⚙️",
-    description: "Tools that help me create great things.",
-    fieldSkill: [
-      {
-        name: "Figma",
-        icon: "figma",
-        link: "https://astro.build/",
-        color: "#A259FF",
-        xp: 95,
-      },
-      {
-        name: "Webflow",
-        icon: "webflow",
-        link: "https://astro.build/",
-        color: "#1B73F5",
-        xp: 90,
-      },
-      {
-        name: "WordPress",
-        icon: "wordpress",
-        link: "https://wordpress.org/",
-        color: "#08789D",
-        xp: 75,
-      },
-    ],
-  },
-  {
     field: "Languages 👾",
     description: "Template, styling or programming language? They all go here.",
     fieldSkill: [
@@ -180,6 +153,33 @@ const skills: Skill[] = [
         link: "https://nextjs.org/",
         color: "#000",
         xp: 70,
+      },
+    ],
+  },
+  {
+    field: "Tools  ⚙️",
+    description: "Tools that help me create great things.",
+    fieldSkill: [
+      {
+        name: "Figma",
+        icon: "figma",
+        link: "https://astro.build/",
+        color: "#A259FF",
+        xp: 80,
+      },
+      {
+        name: "Webflow",
+        icon: "webflow",
+        link: "https://astro.build/",
+        color: "#1B73F5",
+        xp: 30,
+      },
+      {
+        name: "WordPress",
+        icon: "wordpress",
+        link: "https://wordpress.org/",
+        color: "#08789D",
+        xp: 75,
       },
     ],
   },
@@ -258,8 +258,7 @@ skills.forEach((skill) => {
         <h2 class="section-title">Expertise</h2>
         <div class="content">
           <p class="mb-6 sm:mb-8">
-            This is the tech I most often use in my programming, ranked by
-            proficiency:
+            These are the tools and tech I most often use ranked by proficiency:
           </p>
           <div
             class="p-4 bg-[var(--gray-900)] border border-[var(--gray-600)] rounded-3xl shadow sm:p-6 space-y-8"
